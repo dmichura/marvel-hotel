@@ -1,0 +1,11 @@
+#path c:\Windows\System32\Drivers\etc\hosts
+127.0.0.1 marvel-hotel.pl
+127.0.0.1 www.marvel-hotel.pl
+
+# vhosts
+<VirtualHost *:80>
+    ServerAdmin webmaster@domain1.com
+    DocumentRoot "D:\Programy\xampp\htdocs\marvel-hotel\public"
+    ServerName marvel-hotel.pl
+    ServerAlias www.marvel-hotel.pl
+</VirtualHost>
