@@ -1,6 +1,6 @@
 <?php
 class Router {
-    private const allowedMethod = ['GET', 'POST'];
+    private const allowedMethod = ['GET', 'POST', 'PUT', 'DELETE'];
     private $routing = [];
     private Request $request;
     public function __construct(Request $request)
@@ -10,7 +10,7 @@ class Router {
 
     public function addRoute($method, $path, $callback) : bool
     {
-        if ( !in_array($method, self::allowedMethod) )
+        if ( !in_array($method, self::allowedMethod) && $method != "ALL" )
         {
             return false;
         }
@@ -23,12 +23,17 @@ class Router {
     {
         $method = $this->request->getMethod();
         $path = $this->request->getPath();
-
-        if( isset($this->routing[$method][$path]) )
+        if ( 
+            !in_array($method, self::allowedMethod)
+            || empty($this->routing[$method][$path])
+        )
         {
-            call_user_func($this->routing[$method][$path], $db);
+            $method = "ALL";
+            $path = "*";
         }
-        return false;
+
+        call_user_func($this->routing[$method][$path], $db);
+        return true;
     }
 
 }

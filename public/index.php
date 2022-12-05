@@ -11,12 +11,24 @@
     });
     $app = new Application();
     $app->addRoute( 'GET', '/', function (Database $db) {
-        new Home($db);
-    } );
+        redirect("home");
+    });
     $app->addRoute( 'GET', '/home', function (Database $db) {
         new Home($db);
     } );
 
+    $app->addRoute('GET', '/404', function(){
+        $page = [
+            'name' => "not_found",
+            'title' => '404'
+        ];
+        view($page);
+        new Response(404);
+    });
+
+    $app->addRoute( 'ALL', '*', function (Database $db) {
+        redirect("404");
+    });
     $app->run();
     die();
 ?>

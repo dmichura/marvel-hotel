@@ -1,14 +1,22 @@
 <?php
 
 class Home {
-    private string $name = 'Home';
+    private array $page = [];
     public function __construct(Database $db)
     {
-        echo $this->name;
+        $this->page = [
+            'name' => 'Home',
+            'title' => 'Strona główna',
+            'db' => $db,
+            'body' => [],
+        ];
         // model
-        model($this->name);
+        model($this->page);
         //view
-        view($this->name);
+        view($this->page);
+
+        // response
+        new Response(200);
     }
 
 

@@ -1,7 +1,7 @@
 <?php
 
 class Request {
-    private const allowedMethod = [];
+
     private string $method = '';
     private string $path = '';
     public function __construct()

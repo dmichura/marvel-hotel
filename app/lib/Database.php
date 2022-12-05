@@ -12,11 +12,11 @@ class Database {
             config['db']['name'],
         );
 
-        if($this->isConnected()){
+        if(!$this->isConnected()){
             // echo 'true';
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     public function isConnected() : bool
@@ -31,10 +31,35 @@ class Database {
         return true;
     }
 
+    public function query($query, $params=[]) : array
+    {
+        $stmt = $this->con->prepare( $query );
+        if (count($params) > 0) {
+            $build = array_values($params);
+            array_unshift($build, implode("", array_keys($params)));
+            $stmt->bind_param(...$build);
+        }
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $arrResult = $result->fetch_all(MYSQLI_ASSOC);
+            $stmt->close();
+        if ( count( $arrResult ) < 0 ) {
+            return [];
+        }
+        return $arrResult;
+
+    }
+
     public function close() : bool
     {
         // echo "close";
-        return $this->con->close();
+        if( !self::isConnected() ) {
+            return false;
+        }
+
+        $this->con->close();
+        $this->con = null;
+        return true;
     }
 
 

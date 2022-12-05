@@ -4,9 +4,133 @@
   margin: 0;
 }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 body {
   width: 100%;
   min-height: 100vh;
-  background: radial-gradient(#444444, #212121, #090909);
+  background: #131313;
   color: white;
+  overflow-x: hidden;
+}
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+header {
+  width: 100%;
+  height: 10vh;
+  min-height: 80px;
+  background: #212121;
+  border-bottom: 2px solid #777;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.row {
+  flex: 1;
+  height: 100%;
+}
+
+.header-hamburger {
+  width: 36px;
+  height: 28px;
+  position: relative;
+  z-index: 100;
+}
+.header-hamburger > span {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  border-radius: 12px;
+  background-color: white;
+  transition: 0.25s linear;
+}
+.header-hamburger > span:nth-of-type(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.header-hamburger > span:nth-of-type(3) {
+  top: 100%;
+  transform: translateY(-100%);
+}
+
+.header-hamburger.active > span:nth-of-type(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+.header-hamburger.active > span:nth-of-type(2) {
+  opacity: 0;
+}
+.header-hamburger.active > span:nth-of-type(3) {
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.header-logo__wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  position: relative;
+  z-index: 1;
+}
+
+.header-logo__wrapper img {
+  display: block;
+  width: auto;
+  position: relative;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  animation: spin 10s ease 0.5s infinite;
+}
+
+.header-accessibility {
+  background: green;
+}
+
+nav {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+  opacity: 1;
+}
+
+.nav.active {
+  opacity: 1;
+  transform: translateX(0);
+  background: rgba(0, 0, 0, 1);
+  transition: 0.15s opacity, 0.5s transform 0.1s;
+}
+
+.nav.hide {
+  transition: 1s;
+  opacity: 1;
+  transform: translateX(-100%);
 }
