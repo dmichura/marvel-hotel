@@ -10,9 +10,10 @@ This project presents an innovative hotel managment website. Created for the pur
 
 ## Public endpoints
 
-| Path  | View | Method |
-| ----- | ---- | ------ |
-| /home | home | GET    |
+| Path  | Description       | Method |
+| ----- | ----------------- | ------ |
+| /     | Redirect to /home | GET    |
+| /home | View home         | GET    |
 
 ## Tech i used:
 
