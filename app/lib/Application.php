@@ -20,7 +20,7 @@ class Application {
 
     public function run() : void {
         $this->db = new Database();
-        $this->router->resolve($this->db);
+        $this->router->resolve($this->request, $this->db);
         $this->db->close();
     }
 }

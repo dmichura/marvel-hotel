@@ -1,12 +1,12 @@
 <?php
 
-class Home {
+class Rooms {
     private array $page = [];
     public function __construct(Request $req, Database $db)
     {
         $this->page = [
-            'name' => 'Home',
-            'title' => 'Strona główna',
+            'name' => 'Rooms',
+            'title' => 'Pokoje',
             'db' => $db,
             'req' => $req,
             'body' => [],

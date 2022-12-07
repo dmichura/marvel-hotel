@@ -14,10 +14,12 @@ class Response {
     {
         if( isset(self::codes[$code]) ) {
             header("HTTP/1.1 $code ".self::codes[$code]);
+            die();
         }
         else
         {
             header("HTTP/1.1 405 Method Not Allowed");
+            die();
         }
     }
 }
