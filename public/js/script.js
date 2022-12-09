@@ -16,9 +16,12 @@ class Application {
 
   clickHandler(e) {
     const target = e.target || null;
+    // console.log(target);
     if (target === this.hamburger.getElement()) {
       this.hamburger.toggle();
       return true;
+    } else {
+      this.hamburger.toggle(false);
     }
     return false;
   }

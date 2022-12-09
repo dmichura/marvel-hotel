@@ -8,15 +8,17 @@ class Router {
         'DELETE',
     ];
     private Request $req;
-
+    private Response $res;
+    private array $data;
     private array $routes = [
         // method => [path, callback]
     ];
 
-    public function __construct(Request &$req, $routes = [])
+    public function __construct(Request $req, Response $res, $routes = [], $data = [])
     {
-        // _log($routes);
         $this->req = $req;
+        $this->res = $res;
+        $this->data = $data;
         if (count($routes) > 0) {
             foreach ($routes as $val)
             {
@@ -41,7 +43,7 @@ class Router {
             redirect('404');
         }
         // _log($this->routes[$method][$path]);
-        call_user_func($this->routes[$method][$path]);
+        call_user_func($this->routes[$method][$path], $this->req, $this->res, $this->data);
     }
 
 }

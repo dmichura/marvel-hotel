@@ -27,9 +27,10 @@
         <nav id="header-nav">
           <ul class="header-nav">
             <?php
-            foreach ($nav as $value) {
+            foreach ($page['nav'] as $value) {
                 $active = '';
-                if ( isset($page['req']) && is_object($page['req']) && strcmp("/{$value[0]}", $page['req']->getPath()) == 0 ) {
+
+                if ( isset($page['path']) && strcmp($value[0], $page['path']) == 0 ) {
                   $active = 'active';
                 }
                 echo "<li class='$active'><a href='/{$value[0]}'>{$value[1]}</a></li>";

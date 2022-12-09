@@ -6,17 +6,18 @@ class Application {
     private Router $router;
     private Response $res;
 
-    private array $nav = [
-        ['', 'Strona główna'],
-        ['rooms', 'Strona główna'],
+    public array $nav = [
+        ['home', 'Strona główna'],
+        ['rooms', 'Pokoje'],
     ];
 
     public function __construct($routes = [])
     {
         $this->req = new Request();
         $this->db = new Database();
-        $this->router = new Router( $this->req, $routes );
         $this->res = new Response();
+        $this->router = new Router( $this->req, $this->res, $routes, $this->nav );
+
     }
 
     public function run()

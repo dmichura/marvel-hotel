@@ -13,8 +13,8 @@ class Hamburger {
     }
   }
 
-  toggle() {
-    this.status = !this.status;
+  toggle(force) {
+    this.status = force == null ? !this.status : force;
     if (this.status) {
       this.element.classList.toggle("active", true);
       this.menu.classList.toggle("active", true);
