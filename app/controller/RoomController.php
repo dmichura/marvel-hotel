@@ -4,7 +4,7 @@ class RoomController implements Controller {
     private Request $req;
     private Response $res;
     private array $page = [
-        'title' => 'Strona główna',
+        'title' => 'Pokoje',
         'path' => '',
         'nav' => [],
         'data' => [],

@@ -9,10 +9,8 @@ class Router {
     ];
     private Request $req;
     private Response $res;
-    private array $data;
-    private array $routes = [
-        // method => [path, callback]
-    ];
+    private array $data = [];
+    private array $routes = [];
 
     public function __construct(Request $req, Response $res, $routes = [], $data = [])
     {
@@ -28,8 +26,6 @@ class Router {
                 }
             }
         }
-
-        // _log($this->routes);
     }
 
     public function resolve()
@@ -38,11 +34,14 @@ class Router {
         $method = $this->req->getMethod();
         if(
             !in_array($method, self::allowedMethod) ||
-            !isset($this->routes[$method][$path])
+            !isset($this->routes[$method][$path]) ||
+            !is_callable($this->routes[$method][$path])
         ) {
-            redirect('404');
+            $this->res->setCode(200);
+            $this->res->setRedirect('404');
+            $this->res->resolve();
+            die();
         }
-        // _log($this->routes[$method][$path]);
         call_user_func($this->routes[$method][$path], $this->req, $this->res, $this->data);
     }
 

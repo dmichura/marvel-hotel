@@ -25,12 +25,4 @@
         }
         return false;
     }
-
-    function redirect($path) : bool {
-        if(empty($path)) {
-            return false;
-        }
-        header("Location: /$path");
-        return true;
-    }
 ?>

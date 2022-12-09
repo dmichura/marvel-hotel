@@ -16,8 +16,7 @@ class Application {
         $this->req = new Request();
         $this->db = new Database();
         $this->res = new Response();
-        $this->router = new Router( $this->req, $this->res, $routes, $this->nav );
-
+        $this->router = new Router($this->req, $this->res, $routes, $this->nav);
     }
 
     public function run()
