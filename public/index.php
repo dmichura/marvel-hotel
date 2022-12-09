@@ -15,10 +15,11 @@
             redirect('home');
         }],
         ['GET', '/home', function() {
-            redirect('home2');
+            // redirect('home2');
         }],
         ['GET', '/404', function() {
-            redirect('home2');
+            // redirect('home2');
+            
         }],
     ]);
     // $app->addRoute( 'GET', '', function () {

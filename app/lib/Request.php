@@ -9,10 +9,10 @@ class Request {
     public function __construct()
     {
         // _log($_SERVER);
-        $this->path = preg_replace( '/\/index.php/', '', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+        $this->path = preg_replace('/^\//', '', preg_replace( '/\/index.php/', '', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)));
         $this->method = $_SERVER['REQUEST_METHOD'];
         $this->params = explode("&", $_SERVER['QUERY_STRING']);
-        _log( self::getPath() );
+        // _log( self::getPath() );
 
     }
 

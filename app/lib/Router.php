@@ -21,12 +21,13 @@ class Router {
             foreach ($routes as $val)
             {
                 if (in_array($val[0], self::allowedMethod)) {
-                    $this->routes[$val[0]][] = [$val[1], $val[2]];
+                    $path = preg_replace('/^\//', '', $val[1]);
+                    $this->routes[$val[0]][$path] = $val[2];
                 }
             }
         }
 
-        _log($this->routes);
+        // _log($this->routes);
     }
 
     public function resolve()
@@ -34,13 +35,13 @@ class Router {
         $path = $this->req->getPath();
         $method = $this->req->getMethod();
         if(
-            !in_array($method, self::allowedMethod
-        )) {
-            $method = 'GET';
-            $path = '/404';
+            !in_array($method, self::allowedMethod) ||
+            !isset($this->routes[$method][$path])
+        ) {
+            redirect('404');
         }
-        _log()
-        // call_user_func($this->routes[$method][$path][1]);
+        // _log($this->routes[$method][$path]);
+        call_user_func($this->routes[$method][$path]);
     }
 
 }
