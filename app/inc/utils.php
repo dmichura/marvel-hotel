@@ -30,7 +30,7 @@
         if(empty($path)) {
             return false;
         }
-        header("Location: $path");
+        header("Location: /$path");
         return true;
     }
 ?>

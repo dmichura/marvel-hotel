@@ -9,29 +9,30 @@
             require APP_PATH."/controller/$file.php";
         }
     });
+
     $app = new Application();
-    $app->addRoute( 'GET', '', function () {
-        redirect("home");
-    });
-    $app->addRoute( 'GET', 'home', function (Request $req, Database $db) {
-        new Home($req, $db);
-    } );
-    $app->addRoute( 'GET', 'rooms/:id', function (Request $req, Database $db) {
-        new Rooms($req, $db);
-    } );
+    // $app->addRoute( 'GET', '', function () {
+    //     redirect("home");
+    // });
+    // $app->addRoute( 'GET', 'home', function (Request $req, Database $db) {
+    //     new Home($req, $db);
+    // } );
+    // $app->addRoute( 'GET', 'rooms/:id', function (Request $req, Database $db) {
+    //     new Rooms($req, $db);
+    // } );
 
-    $app->addRoute('GET', '404', function(){
-        $page = [
-            'name' => "not_found",
-            'title' => '404'
-        ];
-        view($page);
-        new Response(404);
-    });
+    // $app->addRoute('GET', '404', function(){
+    //     $page = [
+    //         'name' => "not_found",
+    //         'title' => '404'
+    //     ];
+    //     view($page);
+    //     new Response(404);
+    // });
 
-    $app->addRoute( 'ALL', '*', function (Request $req, Database $db) {
-        redirect("/404");
-    });
+    // $app->addRoute( 'ALL', '*', function (Request $req, Database $db) {
+    //     redirect("/404");
+    // });
     $app->run();
     die();
 ?>

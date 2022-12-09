@@ -1,11 +1,3 @@
-<?php
-$nav = [
-    ['home', "Strona główna"],
-    ['rooms', "Pokoje"],
-    ['auth', "Zaloguj się"],
-];
-
-?>
 <!DOCTYPE html>
 <html lang="pl-PL">
   <head>

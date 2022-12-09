@@ -1,27 +1,18 @@
 <?php
 
 class Application {
-
+    private Request $req;
     private Database $db;
-    private Request $request;
     private Router $router;
-
+    private Response $res;
     public function __construct()
     {
-        $this->request = new Request();
-        $this->router = new Router($this->request);
+        
     }
 
-
-    public function addRoute( $method, $path, $callback ) : bool
+    public function run()
     {
-        return $this->router->addRoute( $method, $path, $callback );
-    }
 
-    public function run() : void {
-        $this->db = new Database();
-        $this->router->resolve($this->request, $this->db);
-        $this->db->close();
     }
 }
 
