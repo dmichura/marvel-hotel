@@ -10,7 +10,17 @@
         }
     });
 
-    $app = new Application();
+    $app = new Application([
+        ['GET', '/', function() {
+            redirect('home');
+        }],
+        ['GET', '/home', function() {
+            redirect('home2');
+        }],
+        ['GET', '/404', function() {
+            redirect('home2');
+        }],
+    ]);
     // $app->addRoute( 'GET', '', function () {
     //     redirect("home");
     // });
