@@ -10,7 +10,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
     />
-    <title><?= isset($page['title']) ? $page['title'] : 'Hotel Marvel' ?></title>
+    <title><?= isset($page['title']) ? "{$page['title']} | Hotel Marvel" : 'Hotel Marvel' ?></title>
     <link rel="icon" type="image/x-icon" href="favicon.ico"/>
     <link rel="stylesheet" href="/css/style.css"/>
   </head>

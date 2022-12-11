@@ -1,3 +1,4 @@
+/* Hamburger */
 class Hamburger {
   status = false;
   constructor(hamburger, menu) {
@@ -34,10 +35,8 @@ class Hamburger {
   }
 }
 
-new Hamburger(
-  document.querySelector(".header-hamburger"),
-  document.querySelector(".nav")
-);
+/* Application */
+
 class Application {
   constructor() {
     this.hamburger = new Hamburger(
