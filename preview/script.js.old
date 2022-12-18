@@ -1,13 +1,10 @@
-const root = document.querySelector(":root");
 /* Hamburger */
 class Hamburger {
   status = false;
-  timer = null;
   constructor(hamburger, menu) {
     this.element = hamburger;
     this.menu = menu;
     this.setTransition(1);
-    this.update();
   }
 
   setTransition(classN) {
@@ -18,25 +15,13 @@ class Hamburger {
   }
 
   toggle(force) {
-    if (this.timer) return false;
     this.status = force == null ? !this.status : force;
     if (this.status) {
       this.element.classList.toggle("active", true);
-      this.menu.classList.toggle("show", true);
       this.menu.classList.toggle("active", true);
     } else {
       this.element.classList.toggle("active", false);
       this.menu.classList.toggle("active", false);
-      this.timer = setTimeout(
-        () => {
-          this.menu.classList.toggle("show", false);
-
-          clearTimeout(this.timer);
-          this.timer = null;
-        },
-        300,
-        this
-      );
     }
     this.setTransition(
       this.status === false
@@ -48,12 +33,6 @@ class Hamburger {
   getElement() {
     return this.element;
   }
-
-  update() {
-    // const h = document.querySelector(".header").offsetHeight;
-    // console.log(h);
-    // root.style.setProperty("--nav-height", h);
-  }
 }
 
 /* Application */
@@ -61,15 +40,12 @@ class Hamburger {
 class Application {
   constructor() {
     this.hamburger = new Hamburger(
-      document.querySelector(".hamburger-container"),
-      document.querySelector(".nav-wrapper")
+      document.querySelector(".header-hamburger"),
+      document.querySelector("#header-nav")
     );
     // All handlers
     addEventListener("click", (event) => {
       this.clickHandler(event);
-    });
-    addEventListener("resize", (event) => {
-      this.resizeHandler(event);
     });
   }
 
@@ -82,12 +58,6 @@ class Application {
     } else {
       this.hamburger.toggle(false);
     }
-    return false;
-  }
-
-  resizeHandler(e) {
-    // this.hamburger.toggle(false);
-    // this.hamburger.update();
     return false;
   }
 }

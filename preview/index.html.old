@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="Dawid Michura" />
+    <meta name="description" content="Marvel Hotel" />
+    <meta name="keywords" content="Marvel Hotel, Hotel w Polsce" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <title>Hotel Marvel</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header>
+        <div class="header__wrapper">
+          <div class="header-hamburger__wrapper">
+            <button type="button" class="header-hamburger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+
+          <div class="header-logo__wrapper">
+            <h1>Hotel Marvel</h1>
+          </div>
+        </div>
+      </header>
+
+      <article>
+        <section class="content">
+          <h3>
+            Jeśli szukasz wyjątkowego miejsca na wakacyjny wypoczynek, to Marvel
+            w Bługarii jest idealnym wyborem! Nasz hotel oferuje szerokie
+            spektrum udogodnień, w tym piękną piaszczystą plażę, darmowe Wi-Fi,
+            kryty basen, a także całodobowy TUI Service Center oraz specjalne
+            menu dla dzieci. Do tego wszystkiego możesz skorzystać z naszego
+            luksusowego spa, aby całkowicie się zrelaksować. Zarezerwuj swój
+            pobyt w Marvel już dziś i ciesz się wspaniałymi wakacjami!
+          </h3>
+        </section>
+      </article>
+
+      <nav id="header-nav">
+        <ul class="header-nav">
+          <li>
+            <div class="header-accessibility"></div>
+          </li>
+          <li class="active"><a href="/">Strona główna</a></li>
+          <li class=""><a href="/">Pokoje</a></li>
+        </ul>
+      </nav>
+      <footer>
+        <div class="content">
+          <p>
+            Adres: 8240 Słoneczny Brzeg, Bługaria<br />
+            Numer telefonu: <a href="tel:+35912345678">+359 123 456 78</a><br />
+            Adres e-mail: <a href="mailto:hotel@marvel.bg">hotel@marvel.bg</a>
+          </p>
+          <ul>
+            <li><a href="#">Polityka prywatności</a></li>
+            <li><a href="#">Informacje o dostawie</a></li>
+            <li><a href="#">Informacje o płatnościach</a></li>
+          </ul>
+          <ul>
+            <li>
+              <a href="#"><img src="facebook-logo.png" alt="Facebook" /></a>
+            </li>
+            <li>
+              <a href="#"><img src="instagram-logo.png" alt="Instagram" /></a>
+            </li>
+            <li>
+              <a href="#"><img src="twitter-logo.png" alt="Twitter" /></a>
+            </li>
+          </ul>
+        </div>
+        <h3>Copyright 2022 | Hotel Marvel</h3>
+      </footer>
+    </div>
+    <!-- Close #app -->
+    <script src="script.js"></script>
+  </body>
+</html>
