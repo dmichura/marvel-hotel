@@ -10,7 +10,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
     />
-    <title><?= isset($page['title']) ? "{$page['title']} | Hotel Marvel" : 'Hotel Marvel' ?></title>
+    <title><?= isset($page['title']) ? $page['title'] : 'Hotel Marvel' ?></title>
     <link rel="icon" type="image/x-icon" href="favicon.ico"/>
     <link rel="stylesheet" href="/css/style.css"/>
   </head>
@@ -29,7 +29,6 @@
             <?php
             foreach ($page['nav'] as $value) {
                 $active = '';
-
                 if ( isset($page['path']) && strcmp($value[0], $page['path']) == 0 ) {
                   $active = 'active';
                 }
