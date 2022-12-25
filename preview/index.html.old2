@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="Dawid Michura" />
+    <meta
+      name="description"
+      content="Hotel Marvel w Bułgarii oferuje luksusowe pokoje i doskonałe warunki do wypoczynku nad morzem. Nasz hotel położony jest w malowniczej miejscowości nadmorskiej, a goście mogą korzystać z basenu, sauny oraz wielu atrakcji w okolicy."
+    />
+    <meta
+      name="keywords"
+      content="Hotel Marvel w Bułgarii, Noclegi w Bułgarii - Marvel Hotel, Pokoje hotelowe Marvel w Bułgarii, Wakacje w Bułgarii - Marvel Hotel, Hotele w Bułgarii - Marvel, Bułgarskie wakacje - Marvel Hotel, Hotel Marvel - Bułgaria, Bułgarski hotel Marvel, Marvel Hotel - Bułgarskie wakacje, Bułgarski hotel nad morzem - Marvel"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <title>Hotel Marvel</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app col">
+      <!-- Container for all elements -->
+      <header class="header col">
+        <div class="header-top row">
+          <div class="hamburger-wrapper">
+            <div class="hamburger-container">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <nav class="nav-wrapper">
+            <ul class="nav-list">
+              <li><a href="/home">Strona główna</a></li>
+              <li><a href="/rooms">Pokoje</a></li>
+              <li><a href="/contact">Kontakt</a></li>
+              <li><a href="/profile">Moje Konto</a></li>
+              <li><a href="/contact">Rezerwacje</a></li>
+              <li><a href="/contact">Rezerwacje</a></li>
+              <li><a href="/contact">Logowanie</a></li>
+            </ul>
+          </nav>
+          <div class="header-logo-wrapper"><h1>Marvel Hotel</h1></div>
+        </div>
+      </header>
+      <!-- 
+      <main class="col">
+        <section class="col">
+          <div class="description row">
+            <p>
+              Jeśli szukasz wyjątkowego miejsca na wakacyjny wypoczynek, to
+              <strong>Marvel</strong>
+              w Bługarii jest idealnym wyborem! Nasz hotel oferuje szerokie
+              spektrum udogodnień, w tym piękną piaszczystą plażę, darmowe
+              Wi-Fi, kryty basen, a także całodobowy TUI Service Center oraz
+              specjalne menu dla dzieci. Do tego wszystkiego możesz skorzystać z
+              naszego luksusowego spa, aby całkowicie się zrelaksować.
+              Zarezerwuj swój pobyt w Marvel już dziś i ciesz się wspaniałymi
+              wakacjami!
+            </p>
+          </div>
+
+          <div class="buttons row">
+            <button>Pokoje</button>
+            <button>Rezerwacja</button>
+          </div>
+        </section>
+      </main> -->
+
+      <footer class="footer"></footer>
+    </div>
+    <div class="modals">
+      <!-- Container for all modals, this container is above all on the page -->
+    </div>
+    <!-- Close #app -->
+    <script src="script.js"></script>
+  </body>
+</html>

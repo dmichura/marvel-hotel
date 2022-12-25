@@ -16,7 +16,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
     />
-    <title>Hotel Marvel</title>
+    <title>Marvel Hotel</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap"
       rel="stylesheet"
@@ -25,40 +25,61 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="app col">
+    <div class="bg">
+      <!-- This div is responsible for background -->
+    </div>
+
+    <div class="app flex col">
       <!-- Container for all elements -->
-      <header class="header col">
-        <div class="header-top row">
-          <div class="hamburger-wrapper">
-            <div class="hamburger-container">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
+      <header class="header-wrapper">
+        <div class="header-container flex row">
+          <div class="hamburger-wrapper flex">
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
           </div>
-          <nav class="nav-wrapper">
-            <ul class="nav-list">
-              <li><a href="/home">Strona główna</a></li>
-              <li><a href="/rooms">Pokoje</a></li>
-              <li><a href="/contact">Kontakt</a></li>
-              <li><a href="/profile">Moje Konto</a></li>
-              <li><a href="/contact">Rezerwacje</a></li>
-              <li><a href="/contact">Rezerwacje</a></li>
-              <li><a href="/contact">Logowanie</a></li>
-            </ul>
-          </nav>
-          <div class="header-logo-wrapper"><h1>Marvel Hotel</h1></div>
+
+          <div class="logo-wrapper">
+            <h1>Marvel Hotel</h1>
+          </div>
         </div>
       </header>
+      <main class="main-wrapper">
+        <section></section>
+      </main>
+      <footer class="footer-wrapper flex row-3">
+        <div class="company-data">
+          <p>Adres: 8240 Słoneczny Brzeg, Bługaria</p>
+          <p>Numer telefonu: <a href="tel:+35912345678">+359 123 456 78</a></p>
+          <p>
+            Adres e-mail: <a href="mailto:hotel@marvel.bg">hotel@marvel.bg</a>
+          </p>
+        </div>
 
-      <main></main>
+        <ul class="useful-links">
+          <li><a href="#">Polityka prywatności</a></li>
+          <li><a href="#">Informacje o dostawie</a></li>
+          <li><a href="#">Informacje o płatnościach</a></li>
+        </ul>
 
-      <footer class="footer"></footer>
+        <ul class="social-links flex col right">
+          <li>
+            <a href="#"><img src="facebook-logo.png" alt="Facebook" /></a>
+          </li>
+          <li>
+            <a href="#"><img src="instagram-logo.png" alt="Instagram" /></a>
+          </li>
+          <li>
+            <a href="#"><img src="twitter-logo.png" alt="Twitter" /></a>
+          </li>
+        </ul>
+
+        <h3 class="flex row">&copy; 2022 | Marvel Hotel</h3>
+      </footer>
     </div>
+
     <div class="modals">
       <!-- Container for all modals, this container is above all on the page -->
     </div>
-    <!-- Close #app -->
-    <script src="script.js"></script>
   </body>
 </html>
