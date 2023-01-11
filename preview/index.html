@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="pl-PL">
   <head>
     <meta charset="UTF-8" />
@@ -25,61 +24,88 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="bg">
-      <!-- This div is responsible for background -->
-    </div>
+    <div class="app">
+      <header>
+        <!-- <div class="hamburger">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </div> -->
 
-    <div class="app flex col">
-      <!-- Container for all elements -->
-      <header class="header-wrapper">
-        <div class="header-container flex row">
-          <div class="hamburger-wrapper flex">
-            <span class="hamburger-bar"></span>
-            <span class="hamburger-bar"></span>
-            <span class="hamburger-bar"></span>
-          </div>
-
-          <div class="logo-wrapper">
-            <h1>Marvel Hotel</h1>
-          </div>
+        <div class="logo-wrapper row center">
+          <h1 class="logo">Marvel Hotel</h1>
         </div>
       </header>
-      <main class="main-wrapper">
-        <section></section>
+      <nav>
+        <ul class="menu">
+          <li class="menu-item row center">
+            <a href="/home">Strona główna</a>
+          </li>
+          <li class="menu-item row center">
+            <a href="/reservation">Rezerwacje</a>
+          </li>
+          <li class="menu-item row center"><a href="/contact">Kontakt</a></li>
+        </ul>
+      </nav>
+      <main>
+        <section>
+          <article>
+            Marvel Hotel to luksusowy obiekt położony w pięknej Bługarii, nad
+            malowniczą plażą. Goście mogą cieszyć się widokami na morze i
+            korzystać z uroków słonecznego wypoczynku.
+          </article>
+        </section>
+
+        <section>
+          <article>
+            W hotelu znajduje się szeroki wachlarz udogodnień, takich jak
+            darmowe WiFi, dzięki któremu goście mogą łatwo połączyć się z
+            internetem i załatwić wszelkie sprawy online.
+          </article>
+        </section>
+
+        <section>
+          <article>
+            Marvel Hotel oferuje również luksusowe SPA, gdzie goście mogą
+            zrelaksować się w saunie, jacuzzi lub skorzystać z masaży i zabiegów
+            pielęgnacyjnych. Jest to idealne miejsce, aby odpocząć i
+            zregenerować siły po całym dniu spędzonym na plaży lub zwiedzaniu
+            okolicy.
+          </article>
+        </section>
+        <section>
+          <article>
+            Marvel Hotel jest doskonałym wyborem dla par szukających
+            romantycznego wypoczynku, rodzin z dziećmi, jak również dla grup
+            przyjaciół chcących spędzić wakacje razem.
+          </article>
+        </section>
+        <section>
+          <article>
+            Dzięki wysokiej jakości usługom i dogodnemu położeniu, Marvel Hotel
+            z pewnością zapewni niezapomniany wypoczynek i sprawi, że goście
+            będą chcieli tu wracać. Warto zarezerwować pobyt już teraz i cieszyć
+            się wszystkim, co hotel ma do zaoferowania.
+          </article>
+        </section>
       </main>
-      <footer class="footer-wrapper flex row-3">
-        <div class="company-data">
-          <p>Adres: 8240 Słoneczny Brzeg, Bługaria</p>
-          <p>Numer telefonu: <a href="tel:+35912345678">+359 123 456 78</a></p>
-          <p>
-            Adres e-mail: <a href="mailto:hotel@marvel.bg">hotel@marvel.bg</a>
-          </p>
-        </div>
-
-        <ul class="useful-links">
-          <li><a href="#">Polityka prywatności</a></li>
-          <li><a href="#">Informacje o dostawie</a></li>
-          <li><a href="#">Informacje o płatnościach</a></li>
-        </ul>
-
-        <ul class="social-links flex col right">
-          <li>
-            <a href="#"><img src="facebook-logo.png" alt="Facebook" /></a>
-          </li>
-          <li>
-            <a href="#"><img src="instagram-logo.png" alt="Instagram" /></a>
-          </li>
-          <li>
-            <a href="#"><img src="twitter-logo.png" alt="Twitter" /></a>
-          </li>
-        </ul>
-
-        <h3 class="flex row">&copy; 2022 | Marvel Hotel</h3>
-      </footer>
     </div>
 
     <div class="modals">
       <!-- Container for all modals, this container is above all on the page -->
     </div>
+
+    <div class="preloader">
+      <div class="preloader-logo-wrapper">
+        <h3 class="preloader-logo-title">Marvel</h3>
+        <h3 class="preloader-logo-title">Hotel</h3>
+      </div>
+      <span class="preloader-logo-text">Ładowanie</span>
+      <div class="preloader-bar-wrapper">
+        <div class="preloader-bar" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
   </body>
 </html>
