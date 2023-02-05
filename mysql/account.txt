@@ -1,0 +1,4 @@
+id (int)
+username (varchar 100)
+password (varchar 255)
+register_time (datetime)

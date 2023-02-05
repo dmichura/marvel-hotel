@@ -1,0 +1,5 @@
+id (bigint 20)
+room_id (int) FK
+account_id (int) FK
+start_time (datetime)
+end_time (datetime)
