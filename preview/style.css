@@ -9,12 +9,14 @@
 
 /* === Variables === */
 :root {
-  --background-color: rgba(21, 21, 21);
+  --background-color: rgb(21, 21, 21);
+  --color: rgb(255, 255, 255);
 }
 /* === Typography === */
 html {
   font-size: 16px;
   font-family: "Ubuntu";
+  scroll-behavior: smooth;
 }
 
 h1 {
@@ -47,6 +49,7 @@ body {
   width: 100%;
   min-height: 100vh;
   background-color: var(--background-color);
+  color: var(--color);
 }
 
 /* === app === */
@@ -55,19 +58,29 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  scroll-snap-type: y proximity;
 }
 
 header {
   width: 100%;
   height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
 }
 
 .header__bg {
   width: 100%;
   height: 100vh;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   overflow: hidden;
   background: #212121;
+  z-index: -1;
 }
 
 .header__video {
@@ -81,4 +94,19 @@ header {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  position: relative;
+}
+
+.header__bg::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.header__logo {
+  font-size: 5rem;
 }
