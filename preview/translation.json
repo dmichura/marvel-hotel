@@ -1,5 +1,21 @@
 {
-  "pl": {},
+  "pl": {
+    "homepage": "Strona główna",
+    "aboutus": "O nas",
+    "rooms": "Pokoje",
+    "gallery": "Galeria",
+    "contact": "Kontakt",
+    "cookie-message": "Ta strona korzysta z plików cookie. Korzystając z tej witryny, wyrażasz zgodę na ich działanie!",
+    "btn-accept": "Akceptuj"
+  },
 
-  "en": {}
+  "en": {
+    "homepage": "Homepage",
+    "aboutus": "About us",
+    "rooms": "Rooms",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "cookie-message": "This website uses cookies. By using this site, you consent to their operation!",
+    "btn-accept": "Accept"
+  }
 }

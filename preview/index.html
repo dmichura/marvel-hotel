@@ -1,5 +1,10 @@
-<html lang="pl-PL">
+<!DOCTYPE html>
+<html lang="pl-PL" class="preload">
   <head>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;"
+    />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="author" content="Dawid Michura" />
@@ -34,15 +39,50 @@
             autoplay="autoplay"
             loop="loop"
             muted="muted"
+            playsinline="playsinline"
             src="./assets/video/background/7.mp4"
           ></video>
         </div>
-
         <div class="header__content">
+          <nav>
+            <h1 class="nav__logo">Marvel Hotel</h1>
+            <div class="nav__hamburger">
+              <span></span><span></span><span></span>
+            </div>
+            <ul class="nav__menu">
+              <li class="nav__menu-item active">
+                <a href="" data-ls="homepage"></a>
+              </li>
+              <li class="nav__menu-item">
+                <a href="" data-ls="aboutus"></a>
+              </li>
+              <li class="nav__menu-item">
+                <a href="" data-ls="rooms"></a>
+              </li>
+              <li class="nav__menu-item">
+                <a href="" data-ls="gallery"></a>
+              </li>
+              <li class="nav__menu-item">
+                <a href="" data-ls="contact"></a>
+              </li>
+
+              <li id="nav__menu-flags"></li>
+            </ul>
+          </nav>
+
           <h2 class="header__logo" id="header-logo">Marvel</h2>
         </div>
       </header>
+
+      <div id="cookie-modal">
+        <p class="cookie-modal__content" data-ls="cookie-message"></p>
+        <button type="button" id="cookie-modal__button" data-ls="btn-accept">
+          Akceptuj
+        </button>
+      </div>
     </div>
+
+    <!-- <div id="modals"></div> -->
 
     <script src="./script.js"></script>
   </body>
