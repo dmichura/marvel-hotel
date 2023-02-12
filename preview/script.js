@@ -8,31 +8,64 @@ const debounce = (func) => {
   };
 };
 
-const getCookie = (cname) => {
-  let name = cname + "=";
-  let decodedCookie = decodeURIComponent(document.cookie);
-  let ca = decodedCookie.split(";");
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) == " ") {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-};
-
 class CookieManager {
-  accepted = false;
-  constructor() {
-    if (getCookie("accepted")) this.accepted = true;
-    console.log(this.accepted);
+  static accepted = false;
+  cookieMessage = null;
+  cookieMessageActionButton = null;
+  constructor(cookieMessage) {
+    if (!isElement(cookieMessage)) return false;
+    this.cookieMessage = cookieMessage;
+    if (Boolean(CookieManager.getCookie("accepted")))
+      CookieManager.accepted = true;
+    if (CookieManager.accepted) {
+      this.toggleCookieMessage(false);
+    }
+
+    this.cookieMessageActionButton = cookieMessage.querySelector(
+      "#cookie-modal__button"
+    );
+  }
+  acceptCookie() {
+    CookieManager.setCookie("accepted", true, 100, true);
+    this.toggleCookieMessage(false);
+    return true;
+  }
+  toggleCookieMessage(force) {
+    this.cookieMessage.classList.toggle(
+      "hide",
+      force !== undefined ? !force : undefined
+    );
   }
 
-  setCookie()
-  getCookie()
+  static setCookie(name, value, days, force) {
+    if (!CookieManager.accepted && force !== true) {
+      return false;
+    }
+    let expires = "";
+    if (days) {
+      let date = new Date();
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    return true;
+  }
+
+  static getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
 }
 
 class LanguageSystem {
@@ -42,9 +75,7 @@ class LanguageSystem {
   buttons = [];
   elements = [];
 
-  constructor(lang) {
-    this.lang = "pl";
-  }
+  constructor() {}
 
   setLang(lang) {
     this.buttons[this.langs.indexOf(this.lang)].classList.toggle(
@@ -52,6 +83,7 @@ class LanguageSystem {
       false
     );
     this.lang = this.langs[lang];
+    CookieManager.setCookie("lang", this.lang, 100);
     this.updateText();
     this.buttons[lang].classList.toggle("active", true);
   }
@@ -62,7 +94,11 @@ class LanguageSystem {
     );
 
     this.langs = Object.keys(this.data);
-
+    const lang = CookieManager.getCookie("lang");
+    this.lang =
+      lang !== "" && lang !== null && this.langs.indexOf(lang) > -1
+        ? lang
+        : "pl";
     const langs__wrapper = document.querySelector("#nav__menu-flags");
 
     this.langs.forEach((e) => {
@@ -82,6 +118,7 @@ class LanguageSystem {
     });
 
     this.elements = document.querySelectorAll("*[data-ls]");
+
     this.updateText();
   }
 
@@ -180,11 +217,11 @@ class Hamburger {
     // this.elementMenu.style.transition = "var(--tran2)";
     this.elementMenu.classList.toggle(
       "active",
-      force !== null ? force : undefined
+      force !== undefined ? force : undefined
     );
     return this.element.classList.toggle(
       "active",
-      force !== null ? force : undefined
+      force !== undefined ? force : undefined
     );
   }
 }
@@ -194,7 +231,9 @@ class Application {
     this.init();
   }
   async init() {
-    this.cookieManager = new CookieManager();
+    this.cookieManager = new CookieManager(
+      document.querySelector("#cookie-modal")
+    );
     this.languageSystem = new LanguageSystem();
 
     await this.languageSystem.init();
@@ -240,6 +279,8 @@ class Application {
       this.hamburger.toggle();
     } else if (this.languageSystem.buttons.indexOf(target) > -1) {
       this.languageSystem.setLang(this.languageSystem.buttons.indexOf(target));
+    } else if (target === this.cookieManager.cookieMessageActionButton) {
+      this.cookieManager.acceptCookie();
     }
   }
 
