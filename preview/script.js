@@ -141,6 +141,7 @@ class TypingText {
   text = [];
   curr = 0;
   element = null;
+  currText = "";
   constructor(e, text) {
     if (!isElement(e)) {
       return false;
@@ -150,15 +151,24 @@ class TypingText {
     this.element = e;
     this.curr = 0;
     this.text = text;
+    console.log(this.text);
     this.addLetter();
   }
 
   addLetter() {
     if (!this.element) return false;
     setTimeout(() => {
-      this.element.innerText +=
-        this.text[this.curr][this.element.innerText.length];
-      if (this.element.innerText.length < this.text[this.curr].length) {
+      let text = this.text[this.curr][this.element.innerText.length];
+      if (
+        this.text[this.curr][this.element.innerText.length] === " " &&
+        this.text[this.curr][this.element.innerText.length + 1] !== undefined
+      ) {
+        text = ` ${this.text[this.curr][this.element.innerText.length + 1]}`;
+      }
+      this.currText += text;
+      this.element.innerHTML = `${this.currText}`;
+
+      if (this.currText.length < this.text[this.curr].length) {
         requestAnimationFrame(() => {
           this.addLetter();
         });
@@ -173,11 +183,9 @@ class TypingText {
   removeLetter() {
     if (!this.element) return false;
     setTimeout(() => {
-      this.element.innerText = this.element.innerText.substring(
-        0,
-        this.element.innerText.length - 1
-      );
-      if (this.element.innerText.length > 0) {
+      this.currText = this.currText.substring(0, this.currText.length - 1);
+      this.element.innerHTML = this.currText;
+      if (this.currText.length > 0) {
         requestAnimationFrame(() => {
           this.removeLetter();
         });
@@ -239,9 +247,8 @@ class Application {
     await this.languageSystem.init();
 
     this.logoText = new TypingText(document.querySelector("#header-logo"), [
-      "Marvel",
+      "Marvel Hotel",
       "Wypoczynek",
-      "Bługaria",
       "Bezpieczeństwo",
     ]);
 
