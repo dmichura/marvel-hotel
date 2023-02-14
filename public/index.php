@@ -18,7 +18,7 @@
 
     $app = new Application([
         ['GET', '/', function(Request $req, Response $res, $data=[]) {
-            $res->setCode(200);
+            $res->setCode(301);
             $res->setRedirect('home');
         }],
         ['GET', '/home', function(Request $req, Response $res, $data=[]) {

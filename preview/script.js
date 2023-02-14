@@ -74,7 +74,7 @@ class LanguageSystem {
   langs = [];
   buttons = [];
   elements = [];
-
+  app = null;
   constructor() {}
 
   setLang(lang) {
@@ -88,7 +88,8 @@ class LanguageSystem {
     this.buttons[lang].classList.toggle("active", true);
   }
 
-  async init() {
+  async init(app) {
+    this.app = app;
     this.data = await fetch("./translation.json").then((response) =>
       response.json()
     );
@@ -122,6 +123,13 @@ class LanguageSystem {
     this.updateText();
   }
 
+  getVal(key) {
+    if (key !== undefined) {
+      return this.data[this.lang][key];
+    }
+    return false;
+  }
+
   updateText() {
     if (this.data[this.lang] != null && this.data[this.lang] != undefined) {
       for (const element of this.elements) {
@@ -134,14 +142,30 @@ class LanguageSystem {
         }
       }
     }
+
+    for (var key in this.app.elements) {
+      let value = this.app.elements[key];
+      if (
+        value !== undefined &&
+        value !== null &&
+        value.updateText !== null &&
+        value.updateText !== undefined &&
+        typeof value.updateText == "function"
+      ) {
+        value.updateText();
+      }
+    }
   }
 }
+
+const languageSystem = new LanguageSystem();
 
 class TypingText {
   text = [];
   curr = 0;
   element = null;
   currText = "";
+  willChange = false;
   constructor(e, text) {
     if (!isElement(e)) {
       return false;
@@ -150,8 +174,8 @@ class TypingText {
     e.innerText = "";
     this.element = e;
     this.curr = 0;
-    this.text = text;
-    console.log(this.text);
+    this.indexText = text;
+    this.text = languageSystem.getVal(text);
     this.addLetter();
   }
 
@@ -190,8 +214,8 @@ class TypingText {
           this.removeLetter();
         });
       } else {
-        setTimeout(() => {
-          this.nextText();
+        setTimeout(async () => {
+          await this.nextText();
           this.addLetter();
         }, 1200);
       }
@@ -199,10 +223,19 @@ class TypingText {
   }
 
   nextText() {
+    if (this.willChange) {
+      this.text = languageSystem.getVal(this.indexText);
+      this.willChange = false;
+      return this.nextText();
+    }
     this.curr =
       this.curr == this.text.length - 1
         ? 0
         : Math.min(this.text.length - 1, ++this.curr);
+  }
+
+  updateText() {
+    this.willChange = true;
   }
 }
 
@@ -238,19 +271,18 @@ class Application {
   constructor() {
     this.init();
   }
+  elements = {};
   async init() {
     this.cookieManager = new CookieManager(
       document.querySelector("#cookie-modal")
     );
-    this.languageSystem = new LanguageSystem();
 
-    await this.languageSystem.init();
+    await languageSystem.init(this);
 
-    this.logoText = new TypingText(document.querySelector("#header-logo"), [
-      "Marvel Hotel",
-      "Wypoczynek",
-      "Bezpieczeństwo",
-    ]);
+    this.elements.logoText = new TypingText(
+      document.querySelector("#header-logo"),
+      "typing-header"
+    );
 
     this.hamburger = new Hamburger(
       document.querySelector(".nav__hamburger"),
@@ -284,8 +316,8 @@ class Application {
 
     if (target === this.hamburger.element) {
       this.hamburger.toggle();
-    } else if (this.languageSystem.buttons.indexOf(target) > -1) {
-      this.languageSystem.setLang(this.languageSystem.buttons.indexOf(target));
+    } else if (languageSystem.buttons.indexOf(target) > -1) {
+      languageSystem.setLang(languageSystem.buttons.indexOf(target));
     } else if (target === this.cookieManager.cookieMessageActionButton) {
       this.cookieManager.acceptCookie();
     }

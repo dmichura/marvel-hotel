@@ -4,6 +4,8 @@ class Response {
     private const codes = [
         200 => "OK",
         201 => "Created",
+        301 => "Redirect (perm)",
+        302 => "Redirect (temp)",
         400 => "Bad Request",
         401 => "Unauthorized",
         403 => "Forbidden",

@@ -132,6 +132,7 @@ header {
 }
 
 .typing__text {
+  z-index: -1;
   /* width: 100%; */
   display: inline-block;
   font-size: 10vw;
@@ -244,6 +245,7 @@ nav {
   top: 0;
   left: 0;
   border: 2px solid white;
+  background: white;
   width: 100%;
   transform: none;
   will-change: transform;
