@@ -31,18 +31,17 @@
   <body>
     <div id="app">
       <!-- Hero -->
-
+      <div class="app__bg">
+        <video
+          class="app__video"
+          autoplay="autoplay"
+          loop="loop"
+          muted="muted"
+          playsinline="playsinline"
+          src="./assets/video/background/7.mp4"
+        ></video>
+      </div>
       <header>
-        <div class="header__bg">
-          <video
-            class="header__video"
-            autoplay="autoplay"
-            loop="loop"
-            muted="muted"
-            playsinline="playsinline"
-            src="./assets/video/background/7.mp4"
-          ></video>
-        </div>
         <div class="header__nav">
           <nav>
             <a href="/"><h1 class="nav__logo">Marvel Hotel</h1></a>
@@ -50,7 +49,7 @@
               <span></span><span></span><span></span>
             </div>
             <ul class="nav__menu">
-              <li class="nav__menu-item active">
+              <!-- <li class="nav__menu-item active">
                 <a href="" data-ls="homepage"></a>
               </li>
               <li class="nav__menu-item">
@@ -64,24 +63,19 @@
               </li>
               <li class="nav__menu-item">
                 <a href="" data-ls="contact"></a>
+              </li> -->
+
+              <?php foreach ($page['nav'] as $navItem ): ?>
+              <li class="nav__menu-item">
+                <a href="<?= $navItem[0] ?>" data-ls="<?= $navItem[1] ?>"></a>
               </li>
+              <?php endforeach; ?>
+
 
               <li id="nav__menu-flags"></li>
             </ul>
           </nav>
-
-          <div class="header__content">
-            <div class="typing__wrapper">
-              <h2 class="typing__text" id="header-logo"></h2>
-              <div class="typing__bar"></div>
-            </div>
-          </div>
         </div>
       </header>
 
-      <div id="cookie-modal" class="">
-        <p class="cookie-modal__content" data-ls="cookie-message"></p>
-        <button type="button" id="cookie-modal__button" data-ls="btn-accept">
-          Akceptuj
-        </button>
-      </div>
+

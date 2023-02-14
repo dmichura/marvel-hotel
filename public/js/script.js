@@ -101,22 +101,23 @@ class LanguageSystem {
         ? lang
         : "pl";
     const langs__wrapper = document.querySelector("#nav__menu-flags");
-
-    this.langs.forEach((e) => {
-      const div = document.createElement("div");
-      div.className = "nav__menu-flag";
-      if (this.lang == e) {
-        div.classList.add("active");
-      }
-      const wrapper = document.createElement("div");
-      wrapper.className = "nav__menu-flag__wrapper";
-      const img = document.createElement("img");
-      img.setAttribute("src", `./assets/img/flag/${e}.jpg`);
-      wrapper.append(img);
-      div.append(wrapper);
-      langs__wrapper.append(div);
-      this.buttons.push(div);
-    });
+    if (isElement(langs__wrapper)) {
+      this.langs.forEach((e) => {
+        const div = document.createElement("div");
+        div.className = "nav__menu-flag";
+        if (this.lang == e) {
+          div.classList.add("active");
+        }
+        const wrapper = document.createElement("div");
+        wrapper.className = "nav__menu-flag__wrapper";
+        const img = document.createElement("img");
+        img.setAttribute("src", `./assets/img/flag/${e}.jpg`);
+        wrapper.append(img);
+        div.append(wrapper);
+        langs__wrapper.append(div);
+        this.buttons.push(div);
+      });
+    }
 
     this.elements = document.querySelectorAll("*[data-ls]");
 

@@ -7,8 +7,12 @@ class Application {
     private Response $res;
 
     public array $nav = [
-        ['home', 'Strona główna'],
-        ['rooms', 'Pokoje'],
+        // rote, ls name
+        ['home', 'homepage'],
+        ['about', 'aboutus'],
+        ['gallery', 'gallery'],
+        ['contact', 'contact'],
+        ['rooms', 'rooms'],
     ];
 
     public function __construct($routes = [])
