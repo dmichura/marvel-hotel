@@ -6,21 +6,12 @@ class Application {
     private Router $router;
     private Response $res;
 
-    public array $nav = [
-        // rote, ls name
-        ['home', 'homepage'],
-        ['about', 'aboutus'],
-        ['gallery', 'gallery'],
-        ['contact', 'contact'],
-        ['rooms', 'rooms'],
-    ];
-
-    public function __construct($routes = [])
+    public function __construct($routes = [], $nav = [])
     {
         $this->req = new Request();
         $this->db = new Database();
         $this->res = new Response();
-        $this->router = new Router($this->req, $this->res, $routes, $this->nav);
+        $this->router = new Router($this->req, $this->res, $routes, $nav);
     }
 
     public function run()

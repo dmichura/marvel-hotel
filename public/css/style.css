@@ -363,6 +363,11 @@ section {
   align-items: center;
 }
 
+.section__notfound {
+  text-shadow: 1.5px 1.5px 3px black;
+  font-size: 8vmin !important;
+}
+
 @media screen and (min-width: 1000px) {
   p {
     font-size: 1rem; /* 1rem */

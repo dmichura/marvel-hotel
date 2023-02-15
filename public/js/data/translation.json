@@ -1,5 +1,6 @@
 {
   "pl": {
+    "404-message": "Nie ma takiej strony!",
     "homepage": "Strona główna",
     "aboutus": "O nas",
     "rooms": "Pokoje",
@@ -11,6 +12,7 @@
   },
 
   "en": {
+    "404-message": "Page not found!",
     "homepage": "Homepage",
     "aboutus": "About us",
     "rooms": "Rooms",

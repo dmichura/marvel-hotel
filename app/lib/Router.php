@@ -30,6 +30,7 @@ class Router {
 
     public function resolve()
     {
+        
         $path = $this->req->getPath();
         $method = $this->req->getMethod();
         if(

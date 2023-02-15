@@ -66,7 +66,10 @@
               </li> -->
 
               <?php foreach ($page['nav'] as $navItem ): ?>
-              <li class="nav__menu-item">
+              <?php 
+                $classActive = ($navItem[0] === $page['path']) ? ' active' : "";
+              ?>
+              <li class="nav__menu-item<?=$classActive?>">
                 <a href="<?= $navItem[0] ?>" data-ls="<?= $navItem[1] ?>"></a>
               </li>
               <?php endforeach; ?>
