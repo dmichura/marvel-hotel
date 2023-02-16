@@ -73,11 +73,27 @@ a:hover {
 
 body {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background-color: var(--background-color);
   color: var(--color);
 }
 
+/* === lazdy loading === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+.fade-in {
+  animation-name: fadeIn;
+  animation-duration: 300ms;
+  animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
+  animation-fill-mode: forwards;
+}
 /* === app === */
 #app {
   width: 100%;
@@ -96,7 +112,7 @@ header {
 .app__bg {
   width: 100%;
   min-height: 100vh;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   overflow: hidden;
@@ -114,6 +130,7 @@ header {
   position: absolute;
   left: 50%;
   top: 50%;
+  z-index: 999;
   transform: translate(-50%, -50%) scale(1.05);
 }
 
@@ -137,6 +154,7 @@ header {
   font-size: 10vw;
   position: relative;
   min-height: 3rem;
+  text-shadow: 2px 2px 2px black;
   /* word-break: break-word; */
 }
 
@@ -196,22 +214,8 @@ nav {
   text-transform: uppercase;
   /* background: red; */
   position: relative;
+  z-index: 999;
 }
-
-/* .nav__logo::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: transparent;
-  border-radius: 50%;
-  width: 5rem;
-  height: 5rem;
-  z-index: -1;
-  box-shadow: 0px 0px 5px #ddd;
-  backdrop-filter: blur(8px);
-} */
 
 .nav__logo {
   position: relative;
@@ -235,8 +239,6 @@ nav {
 
 .nav__hamburger span {
   transform-origin: 50% 50%;
-  /*  */
-
   transition: var(--tran1);
   pointer-events: none;
   position: absolute;
@@ -354,7 +356,6 @@ nav {
 }
 
 section {
-  /* background: red; */
   padding: 0 30px 0 30px;
   flex: 1;
   width: 100%;
@@ -366,6 +367,33 @@ section {
 .section__notfound {
   text-shadow: 1.5px 1.5px 3px black;
   font-size: 8vmin !important;
+}
+
+.rooms__wrapper {
+  margin-top: 3vh;
+  width: 100%;
+  gap: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 15px;
+  padding: 15px 30px;
+}
+
+.room {
+  overflow: hidden;
+  width: 300px;
+  height: 400px;
+  background: black;
+}
+
+.room img {
+  display: block;
+  z-index: -1;
 }
 
 @media screen and (min-width: 1000px) {
@@ -405,6 +433,10 @@ section {
   #nav__menu-flags {
     width: 13.3%;
   }
+
+  .rooms__wrapper {
+    width: 80%;
+  }
 }
 
 /* Modals */
@@ -425,7 +457,7 @@ section {
   /* margin: 30px 20px; */
   background: rgba(0, 0, 0, 0.56);
   color: white;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   display: flex;
   justify-content: space-evenly;

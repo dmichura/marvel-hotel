@@ -2,7 +2,10 @@
 class RoomModel implements Model {
     public function __construct(&$page)
     {
-        $page['data'] = ['test2'];
+        $result = $page['db']->query("SELECT * FROM room");
+        $page['data'] = array(
+            "rooms" => $result
+        );
     }
 }
 ?>

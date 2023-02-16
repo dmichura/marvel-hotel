@@ -41,9 +41,10 @@ class Router {
             $this->res->setCode(200);
             $this->res->setRedirect('404');
             $this->res->resolve();
-            die();
         }
+        // _log($this->data);
         call_user_func($this->routes[$method][$path], $this->req, $this->res, $this->data);
+
     }
 
 }

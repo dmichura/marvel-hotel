@@ -11,10 +11,11 @@ class ContactController implements Controller {
     ];
     public function __construct(Request $req, Response $res, $data)
     {
+        $res->setCode(200);
+        $res->resolve();
         $this->page['path'] = $req->getPath();
-        $this->page['nav'] = $data;
-        new NotFoundView($this->page);
-        $res->setCode(404);
+        $this->page['nav'] = $data['nav'];
+        new ContactView($this->page);
     }
 
 }

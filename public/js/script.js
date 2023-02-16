@@ -111,7 +111,10 @@ class LanguageSystem {
         const wrapper = document.createElement("div");
         wrapper.className = "nav__menu-flag__wrapper";
         const img = document.createElement("img");
-        img.setAttribute("src", `./assets/img/flag/${e}.jpg`);
+
+        img.setAttribute("data-src", `./assets/img/flag/${e}.jpg`);
+        img.setAttribute("aria-label", `FLAG ${e}`);
+        img.setAttribute("alt", `${e}`);
         wrapper.append(img);
         div.append(wrapper);
         langs__wrapper.append(div);
@@ -268,6 +271,50 @@ class Hamburger {
   }
 }
 
+class LazyLoading {
+  observator = null;
+  constructor(elements) {
+    // console.log(elements);
+    if ("IntersectionObserver" in window) {
+      this.observer = new IntersectionObserver(
+        (changes, observer) => {
+          changes.forEach(function (change) {
+            if (change.intersectionRatio > 0) {
+              // console.log(change);
+              LazyLoading.loadImage(change.target);
+              observer.unobserve(change.target);
+            }
+          });
+        },
+        {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.5,
+        }
+      );
+      elements.forEach((image) => {
+        this.observer.observe(image);
+      });
+    } else {
+      elements.forEach(function (image) {
+        LazyLoading.loadImage(image);
+      });
+    }
+  }
+
+  static loadImage(image) {
+    // console.log(image);
+    image.classList.add("fade-in");
+    if (image.dataset && image.dataset.src) {
+      image.src = image.dataset.src;
+    }
+
+    if (image.dataset && image.dataset.srcset) {
+      image.srcset = image.dataset.srcset;
+    }
+  }
+}
+
 class Application {
   constructor() {
     this.init();
@@ -279,7 +326,8 @@ class Application {
     );
 
     await languageSystem.init(this);
-
+    this.elements.img = document.querySelectorAll("source, img");
+    this.lazyLoading = new LazyLoading(this.elements.img);
     this.elements.logoText = new TypingText(
       document.querySelector("#header-logo"),
       "typing-header"
@@ -305,6 +353,7 @@ class Application {
 
   loadHandler(e) {
     // console.log("ready");
+
     document.documentElement.classList.remove("preload"); // remove preload class
   }
   clickHandler(e) {

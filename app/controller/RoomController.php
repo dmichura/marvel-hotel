@@ -11,11 +11,13 @@ class RoomController implements Controller {
     ];
     public function __construct(Request $req, Response $res, $data)
     {
+        $res->setCode(200);
+        $res->resolve();
         $this->page['path'] = $req->getPath();
-        $this->page['nav'] = $data;
+        $this->page['nav'] = $data['nav'];
+        $this->page['db'] = $data['db'];
         new RoomModel($this->page);
         new RoomView($this->page);
-        $res->setCode(200);
     }
 
 }

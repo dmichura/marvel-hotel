@@ -37,34 +37,18 @@
           autoplay="autoplay"
           loop="loop"
           muted="muted"
-          playsinline="playsinline"
-          src="./assets/video/background/7.mp4"
-        ></video>
+          playsinline="playsinline">
+          <source src="./assets/video/background/7.mp4">
+        </video>
       </div>
       <header>
         <div class="header__nav">
           <nav>
-            <a href="/"><h1 class="nav__logo">Marvel Hotel</h1></a>
+            <a href="/" aria-label=""><h1 class="nav__logo">Marvel Hotel</h1></a>
             <div class="nav__hamburger">
               <span></span><span></span><span></span>
             </div>
             <ul class="nav__menu">
-              <!-- <li class="nav__menu-item active">
-                <a href="" data-ls="homepage"></a>
-              </li>
-              <li class="nav__menu-item">
-                <a href="" data-ls="aboutus"></a>
-              </li>
-              <li class="nav__menu-item">
-                <a href="" data-ls="rooms"></a>
-              </li>
-              <li class="nav__menu-item">
-                <a href="" data-ls="gallery"></a>
-              </li>
-              <li class="nav__menu-item">
-                <a href="" data-ls="contact"></a>
-              </li> -->
-
               <?php foreach ($page['nav'] as $navItem ): ?>
               <?php 
                 $classActive = ($navItem[0] === $page['path']) ? ' active' : "";
@@ -73,8 +57,6 @@
                 <a href="<?= $navItem[0] ?>" data-ls="<?= $navItem[1] ?>"></a>
               </li>
               <?php endforeach; ?>
-
-
               <li id="nav__menu-flags"></li>
             </ul>
           </nav>

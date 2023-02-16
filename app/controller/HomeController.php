@@ -11,11 +11,13 @@ class HomeController implements Controller {
     ];
     public function __construct(Request $req, Response $res, $data)
     {
+        $res->setCode(200);
+        $res->resolve();
         $this->page['path'] = $req->getPath();
-        $this->page['nav'] = $data;
+        $this->page['nav'] = $data['nav'];
         new HomeModel($this->page);
         new HomeView($this->page);
-        $res->setCode(200);
+ 
     }
 
 }

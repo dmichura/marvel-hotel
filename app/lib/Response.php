@@ -26,7 +26,6 @@ class Response {
     }
     public function setCode(int $code) : bool
     {
-
         if(!self::codes[$code]){
             $code = 400;
         }
@@ -43,7 +42,7 @@ class Response {
         if(!is_null($this->redirect)) {
             header("Location: /{$this->redirect}");
         }
-        die();
+        // die();
     }
 }
 

@@ -6,6 +6,7 @@
     "rooms": "Pokoje",
     "gallery": "Galeria",
     "contact": "Kontakt",
+    "my-account": "Konto",
     "cookie-message": "Ta strona korzysta z plików cookie. Korzystając z tej witryny, wyrażasz zgodę na ich działanie!",
     "btn-accept": "Akceptuj",
     "typing-header": ["Marvel Hotel", "Wypoczynek", "Bezpieczeństwo"]
@@ -18,6 +19,7 @@
     "rooms": "Rooms",
     "gallery": "Gallery",
     "contact": "Contact",
+    "my-account": "Account",
     "cookie-message": "This website uses cookies. By using this site, you consent to their operation!",
     "btn-accept": "Accept",
     "typing-header": ["Marvel Hotel", "Rest", "Security"]
