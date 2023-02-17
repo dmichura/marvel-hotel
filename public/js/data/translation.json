@@ -9,6 +9,7 @@
     "my-account": "Konto",
     "cookie-message": "Ta strona korzysta z plików cookie. Korzystając z tej witryny, wyrażasz zgodę na ich działanie!",
     "btn-accept": "Akceptuj",
+    "btn-book": "Rezerwuj",
     "typing-header": ["Marvel Hotel", "Wypoczynek", "Bezpieczeństwo"]
   },
 
@@ -21,6 +22,7 @@
     "contact": "Contact",
     "my-account": "Account",
     "cookie-message": "This website uses cookies. By using this site, you consent to their operation!",
+    "btn-book": "Book",
     "btn-accept": "Accept",
     "typing-header": ["Marvel Hotel", "Rest", "Security"]
   }

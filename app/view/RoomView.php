@@ -8,8 +8,10 @@ class RoomView implements View {
             <?php //_log($page['data']); ?> 
             <div class="rooms__wrapper">
                 <?php foreach ($page['data']['rooms'] as $room): ?>
-
-                    <article class="room"><img data-src="./assets/img/room/<?= $room['thumbnail_path'] ?>" alt="pokój o nazwie <?= $room['name'] ?>"></article>
+                    <article class="room" data-name='<?= $room['name'] ?>'>
+                        <img data-src="./assets/img/room/<?= $room['thumbnail_path'] ?>" alt="" aria-label="" ?>">
+                        <button class="room__book" data-ls="btn-book" data-roomid="<?= $room['id'] ?>"></button>
+                    </article>
                 <?php endforeach; ?>
             </div>
         </section>

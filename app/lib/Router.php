@@ -26,6 +26,8 @@ class Router {
                 }
             }
         }
+
+        // _log($routes);
     }
 
     public function resolve()
@@ -33,6 +35,11 @@ class Router {
         
         $path = $this->req->getPath();
         $method = $this->req->getMethod();
+
+        // _log(explode("/", $path));
+
+        // _log($this->req->getParams());
+
         if(
             !in_array($method, self::allowedMethod) ||
             !isset($this->routes[$method][$path]) ||
@@ -42,7 +49,6 @@ class Router {
             $this->res->setRedirect('404');
             $this->res->resolve();
         }
-        // _log($this->data);
         call_user_func($this->routes[$method][$path], $this->req, $this->res, $this->data);
 
     }

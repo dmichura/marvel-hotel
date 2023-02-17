@@ -8,6 +8,14 @@ const debounce = (func) => {
   };
 };
 
+const goto = (link) => {
+  if (link !== undefined) {
+    document.location.href = link;
+    return true;
+  }
+  return false;
+};
+
 class CookieManager {
   static accepted = false;
   cookieMessage = null;
@@ -370,6 +378,17 @@ class Application {
       languageSystem.setLang(languageSystem.buttons.indexOf(target));
     } else if (target === this.cookieManager.cookieMessageActionButton) {
       this.cookieManager.acceptCookie();
+    } else if (target.tagName !== undefined) {
+      if (target.tagName.toUpperCase() === "BUTTON") {
+        if (target.className === "room__book") {
+          const roomID = parseInt(target.getAttribute("data-roomid"));
+          if (roomID !== undefined && roomID !== NaN) {
+            console.log(roomID);
+            goto(`/room?id=${roomID}`);
+            return true;
+          }
+        }
+      }
     }
   }
 
