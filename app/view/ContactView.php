@@ -5,7 +5,7 @@ class ContactView implements View {
         require_once APP_PATH."/inc/view/header.php";
         ?>
         <section>
-            <?= _log($page['data']); ?>
+            <!-- <?= _log($page['data']); ?> -->
         </section>
         <?php
 

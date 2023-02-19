@@ -50,7 +50,7 @@
                 endforeach;
             }
 
-            if( gettype($params) === "array" && count($params) > 0 && isset($params['id']) && gettype(intval($params['id'])) == "integer" )
+            if( gettype($params) === "array" && count($params) > 0 && isset($params['id']) && gettype(intval($params['id'])) == "integer" && intval($params['id']) > 0 )
             {
 
             }
@@ -68,7 +68,7 @@
             new RoomController($req, $res, $data);
         }],
         ['GET', '/account', function(Request $req, Response $res, $data=[]) {
-            new RoomController($req, $res, $data);
+            new AccountController($req, $res, $data);
         }],
         ['GET', '/404', function(Request $req, Response $res, $data=[]) {
             new NotFoundController($req, $res, $data);
