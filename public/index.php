@@ -38,34 +38,10 @@
             new ContactController($req, $res, $data);
         }],
         ['GET', '/room', function(Request $req, Response $res, $data=[]) {
-            // new RoomController($req, $res, $data);
-            $params_url = $req->getParams();
-            $params = array();
-            if( gettype($params_url) === "array" && count($params_url) > 0 )
-            {
-                foreach ( $params_url as $param ):
-                    // _log($param);
-                    $paramTable = explode("=", $param);
-                    $params[$paramTable[0]] = $paramTable[1];
-                endforeach;
-            }
-
-            if( gettype($params) === "array" && count($params) > 0 && isset($params['id']) && gettype(intval($params['id'])) == "integer" && intval($params['id']) > 0 )
-            {
-
-            }
-            else
-            {
-                $res->setCode(301);
-                $res->setRedirect("rooms");
-                $res->resolve();
-            }
-
-            // $roomID = explode('=', $req->getParams()[0]);
-            // _log($roomID);
+            new RoomController($req, $res, $data);
         }],
         ['GET', '/rooms', function(Request $req, Response $res, $data=[]) {
-            new RoomController($req, $res, $data);
+            new RoomsController($req, $res, $data);
         }],
         ['GET', '/account', function(Request $req, Response $res, $data=[]) {
             new AccountController($req, $res, $data);

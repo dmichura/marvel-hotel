@@ -1,6 +1,7 @@
 <?php
 
 class Application {
+    private Session $session;
     private Request $req;
     private Database $db;
     private Router $router;
@@ -8,6 +9,7 @@ class Application {
 
     public function __construct($routes = [], $nav = [])
     {
+        $this->session = new Session();
         $this->req = new Request();
         $this->db = new Database();
         $this->res = new Response();
@@ -16,7 +18,7 @@ class Application {
 
     public function run()
     {
-        $re = $this->db->query("SELECT * FROM room");
+        // $re = $this->db->query("SELECT * FROM room");
         // _log($re);
         $this->router->resolve();
 
