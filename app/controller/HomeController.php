@@ -15,9 +15,10 @@ class HomeController implements Controller {
         $res->resolve();
         $this->page['path'] = $req->getPath();
         $this->page['nav'] = $data['nav'];
+
         new HomeModel($this->page);
         new HomeView($this->page);
- 
+        
     }
 
 }

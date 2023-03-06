@@ -1,5 +1,7 @@
+
+
 <?php
-        header ('Content-Type: text/html; charset=utf-8');
+    header ('Content-Type: text/html; charset=utf-8');
     require "../app/inc/bootstrap.php";
     // autoload
     spl_autoload_register(function ($file) {
@@ -52,7 +54,7 @@
     ];
 
     $nav = [
-        // rote, ls name
+        // rote, ls name, permissions
         ['home', 'homepage'],
         // ['about', 'aboutus'],
         ['gallery', 'gallery'],
@@ -60,7 +62,6 @@
         ['rooms', 'rooms'],
         ['account', 'my-account'],
     ];
-
 
     $app = new Application($routes, $nav);
     $app->run();

@@ -3,8 +3,6 @@ class RoomView implements View {
     public function __construct(&$page)
     {
         require_once APP_PATH."/inc/view/header.php";
-
-  
         ?>
         <section >
             <div class="rooms__wrapper">

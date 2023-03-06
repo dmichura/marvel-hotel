@@ -456,6 +456,99 @@ section {
   font-size: 1.3rem;
 }
 
+/* Contact */
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+/* Acordeons */
+.acordeons__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+}
+
+.acordeon {
+  width: 100%;
+  border-bottom: 6px solid #ccc;
+  /* background: black; */
+  position: relative;
+}
+
+.acordeon:last-of-type {
+  border: 0;
+}
+
+.acordeons__title {
+  margin: 1.75rem 0;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 2px black;
+}
+
+.acordeon__question {
+  background: rgba(52, 52, 52, 0.8);
+  padding: 2rem;
+  font-size: 1.45rem;
+  opacity: 0.7;
+  text-shadow: 2px 2px 2px black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: opacity 0.3s linear;
+}
+
+.acordeon__question h3::-moz-selection {
+  background-color: transparent;
+}
+.acordeon__question h3::selection {
+  background-color: transparent;
+}
+
+.acordeon__question h3 {
+  pointer-events: none;
+}
+
+.acordeon__question:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.acordeon__answer {
+  position: absolute;
+  /* display: none; */
+  padding: 30px 15px;
+  background: rgba(21, 21, 21, 0.8);
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: 0.2s linear;
+  font-size: 1.3rem;
+  z-index: -1;
+  text-shadow: 2px 2px 2px black;
+}
+
+.acordeon__answer.show {
+  position: relative;
+  opacity: 1;
+  transform: translateY(0%);
+  /* display: block; */
+}
+
+/* Contact form */
+.contact__form {
+  background: green;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  /* gap: 2rem; */
+}
+
 @media screen and (min-width: 1000px) {
   p {
     font-size: 1rem; /* 1rem */
@@ -517,6 +610,7 @@ section {
   padding: 30px 0;
   /* margin: 30px 20px; */
   background: rgba(0, 0, 0, 0.56);
+  /* background: red; */
   color: white;
   position: fixed;
   bottom: 0;
@@ -541,8 +635,10 @@ button {
 }
 
 .cookie-modal__content {
-  font-size: 1.3rem;
-  width: 80%;
+  font-size: 1.7rem;
+  width: 25%;
+  text-align: center;
+  /* background: blue; */
 }
 
 #cookie-modal__button {

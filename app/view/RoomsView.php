@@ -5,7 +5,6 @@ class RoomsView implements View {
         require_once APP_PATH."/inc/view/header.php";
         ?>
         <section >
-            <?php //_log($page['data']); ?> 
             <div class="rooms__wrapper">
                 <?php foreach ($page['data']['rooms'] as $room): ?>
                     <article class="room" data-name='<?= $room['name'] ?>'>

@@ -15,6 +15,7 @@ class ContactController implements Controller {
         $res->resolve();
         $this->page['path'] = $req->getPath();
         $this->page['nav'] = $data['nav'];
+        new ContactModel($this->page);
         new ContactView($this->page);
     }
 

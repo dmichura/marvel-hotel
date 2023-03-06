@@ -323,6 +323,50 @@ class LazyLoading {
   }
 }
 
+class Acoredeon {
+  element = null;
+  acordeon__question = null;
+  acordeon__answer = null;
+  id = null;
+  visible = false;
+  constructor(i) {
+    const acordeon = document.createElement("div");
+    acordeon.className = "acordeon";
+    acordeon.id = `acordeon-${i}`;
+    this.element = acordeon;
+    this.id = i;
+    this.indexText = `acordeon-${i}`;
+    const data = languageSystem.getVal(this.indexText);
+    this.acordeon__question = document.createElement("div");
+    this.acordeon__question.className = `acordeon__question`;
+    this.acordeon__question.innerHTML = `<h3>${data[0]}</h3>`;
+
+    this.acordeon__answer = document.createElement("div");
+    this.acordeon__answer.className = `acordeon__answer`;
+    this.acordeon__answer.innerHTML = `<p>${data[1]}</p>`;
+
+    acordeon.append(this.acordeon__question);
+    acordeon.append(this.acordeon__answer);
+
+    document.querySelector(".acordeons__wrapper").append(acordeon);
+  }
+  toggle(force) {
+    this.visible = !this.visible;
+    if (this.visible) {
+      this.acordeon__answer.classList.add("show");
+    } else {
+      this.acordeon__answer.classList.remove("show");
+    }
+    return true;
+  }
+
+  updateText() {
+    const data = languageSystem.getVal(this.indexText);
+    this.acordeon__question.innerHTML = `<h3>${data[0]}</h3>`;
+    this.acordeon__answer.innerHTML = `<p>${data[1]}</p>`;
+  }
+}
+
 class Application {
   constructor() {
     this.init();
@@ -340,6 +384,16 @@ class Application {
       document.querySelector("#header-logo"),
       "typing-header"
     );
+    this.elements.acordeons = [];
+    // const acordeons = document.querySelectorAll(".acordeon");
+    // acordeons.forEach((e) => {
+    //   const acoredeon = new Acoredeon(e);
+    //   this.elements.acordeons.push(acoredeon);
+    // });
+
+    for (let i = 0; i <= 9; i++) {
+      this.elements[`acordeon-${i}`] = new Acoredeon(i);
+    }
 
     this.hamburger = new Hamburger(
       document.querySelector(".nav__hamburger"),
@@ -383,11 +437,29 @@ class Application {
         if (target.className === "room__book") {
           const roomID = parseInt(target.getAttribute("data-roomid"));
           if (roomID !== undefined && roomID !== NaN) {
-            console.log(roomID);
+            // console.log(roomID);
             goto(`/room?id=${roomID}`);
             return true;
           }
         }
+      } else if (target.tagName.toUpperCase() === "DIV") {
+        if (target.className === "acordeon__question") {
+          const acordeonID = parseInt(
+            target.parentElement.getAttribute("id").split("-")[1]
+          );
+
+          if (
+            acordeonID != null &&
+            this.elements[`acordeon-${acordeonID}`] &&
+            typeof this.elements[`acordeon-${acordeonID}`] == "object"
+          ) {
+            // console.log(this.elements[`acordeon-${acordeonID}`]);
+
+            this.elements[`acordeon-${acordeonID}`].toggle();
+          }
+        }
+      } else {
+        // console.log(target.tagName.toUpperCase());
       }
     }
   }

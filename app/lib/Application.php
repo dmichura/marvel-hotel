@@ -7,19 +7,20 @@ class Application {
     private Router $router;
     private Response $res;
 
+    private User $user;
+
     public function __construct($routes = [], $nav = [])
     {
         $this->session = new Session();
         $this->req = new Request();
         $this->db = new Database();
         $this->res = new Response();
-        $this->router = new Router($this->req, $this->res, $routes, array("nav"=>$nav, "db"=>$this->db));
+        $this->user = new User($this->session);
+        $this->router = new Router($this->req, $this->res, $routes, array("nav"=>$nav, "db"=>$this->db, "user" => $this->user));
     }
 
     public function run()
     {
-        // $re = $this->db->query("SELECT * FROM room");
-        // _log($re);
         $this->router->resolve();
 
     }
