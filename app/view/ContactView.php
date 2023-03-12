@@ -5,28 +5,43 @@ class ContactView implements View {
         require_once APP_PATH."/inc/view/header.php";
         ?>
         <section class="contact">
-            <!-- <?= _log($page['data']['acordeons']); ?> -->
-            
+            <?php
+                // _log($page);
+                if (  isset($page) && isset($page['data'])) {
+                    if (isset($page['data']['sendTicket'])) {
+                        echo '
+                        <article class="contact__info">
+                            <h2>
+                                Dziękujemy za przesłanie formularza kontaktowego!
+                            </h2>
+
+                            <h3>
+                                Miłego dnia!
+                            </h3>
+
+                            <h4>
+                                Za 5 sekund zostaniesz przeniesiony na podstronę kontakt
+                            </h4>
+                        </article>
+                        <script>
+                            new Redirect("contact", 5000);
+                        </script>
+                        ';
+                    }
+                }
+                
+            ?>
+
             <article class="acordeons__wrapper">
                 <h2 class="acordeons__title">Najczęsciej zadawane pytania</h2>
-               <!-- <div class="acordeon" id="acoredon-<?= $key ?>">
-                        <div class="acordeon__question">
-                            <h3 data-ls=""><?= $value['question'] ?></h3>
-                            <!-- <div>
-                                Dropdown icon
-                            </div> -->
-                        </div>
 
-                        <div class="acordeon__answer">
-                            <p data-ls=""><?= $value['answer'] ?></p>          
-                        </div>
-                    </div> -->
             </article>
 
-            <form action="" method="POST" class="contact__form">
-                <input type="text" name="contact__form-title" id=""/>
-                <input type="email" name="contact__form-email" id=""/>
-                <textarea name="contact__form-content" id="" ></textarea>
+            <form action="/contact?type=addTicket" method="POST" class="contact__form">
+                <h3>Formularz kontaktowy</h3>
+                <input type="text" name="contact__form-title" placeholder="Tytuł" id=""/>
+                <input type="email" name="contact__form-email" placeholder="E-mail" id=""/>
+                <textarea name="contact__form-content" id="" placeholder="Opis" ></textarea>
                 <input type="submit" value="Wyślij">
             </form>
 

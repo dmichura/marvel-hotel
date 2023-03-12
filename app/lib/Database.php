@@ -41,12 +41,20 @@ class Database {
         }
         $stmt->execute();
         $result = $stmt->get_result();
-        $arrResult = $result->fetch_all(MYSQLI_ASSOC);
-            $stmt->close();
-        if ( count( $arrResult ) < 0 ) {
+        if($result)
+        {
+            $arrResult = $result->fetch_all(MYSQLI_ASSOC);
+                $stmt->close();
+            if ( count( $arrResult ) < 0 ) {
+                return [];
+            }
+            return $arrResult;
+        }
+        else
+        {
             return [];
         }
-        return $arrResult;
+
 
     }
 

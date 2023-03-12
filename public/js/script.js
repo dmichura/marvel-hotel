@@ -343,7 +343,7 @@ class Acoredeon {
 
     this.acordeon__answer = document.createElement("div");
     this.acordeon__answer.className = `acordeon__answer`;
-    this.acordeon__answer.innerHTML = `<p>${data[1]}</p>`;
+    this.acordeon__answer.innerHTML = `<h4>${data[1]}</h4>`;
 
     acordeon.append(this.acordeon__question);
     acordeon.append(this.acordeon__answer);
@@ -367,12 +367,24 @@ class Acoredeon {
   }
 }
 
+class Request {
+  path = null;
+  constructor() {
+    this.path = document.location.href.split("/").reverse()[0];
+  }
+
+  getPath() {
+    return this.path
+  }
+}
+
 class Application {
   constructor() {
     this.init();
   }
   elements = {};
   async init() {
+    this.request = new Request();
     this.cookieManager = new CookieManager(
       document.querySelector("#cookie-modal")
     );
@@ -385,15 +397,14 @@ class Application {
       "typing-header"
     );
     this.elements.acordeons = [];
-    // const acordeons = document.querySelectorAll(".acordeon");
-    // acordeons.forEach((e) => {
-    //   const acoredeon = new Acoredeon(e);
-    //   this.elements.acordeons.push(acoredeon);
-    // });
 
-    for (let i = 0; i <= 9; i++) {
-      this.elements[`acordeon-${i}`] = new Acoredeon(i);
-    }
+      if(this.request.getPath() === "contact")
+      {
+        for (let i = 0; i <= 9; i++) {
+          this.elements[`acordeon-${i}`] = new Acoredeon(i);
+        }
+    
+      }
 
     this.hamburger = new Hamburger(
       document.querySelector(".nav__hamburger"),

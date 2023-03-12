@@ -39,6 +39,9 @@
         ['GET', '/contact', function(Request $req, Response $res, $data=[]) {
             new ContactController($req, $res, $data);
         }],
+        ['POST', '/contact', function(Request $req, Response $res, $data=[]) {
+            new ContactController($req, $res, $data);
+        }],
         ['GET', '/room', function(Request $req, Response $res, $data=[]) {
             new RoomController($req, $res, $data);
         }],

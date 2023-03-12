@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 17 Lut 2023, 06:35
+-- Czas generowania: 12 Mar 2023, 15:53
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.1.12
 
@@ -87,6 +87,29 @@ INSERT INTO `room` (`id`, `name`, `description`, `thumbnail_path`) VALUES
 (4, 'Pokój dla 4 osób', 'Pokój dla czterech osób', 'room-2bed.webp'),
 (5, 'Pokój dla 4 osób 2', 'Pokój dla czterech osób - 2', 'room-2bed-2.webp');
 
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `ticket`
+--
+
+CREATE TABLE `ticket` (
+  `id` bigint(20) NOT NULL,
+  `title` text NOT NULL,
+  `email` text NOT NULL,
+  `reason` text NOT NULL,
+  `status` text NOT NULL,
+  `created` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `ticket`
+--
+
+INSERT INTO `ticket` (`id`, `title`, `email`, `reason`, `status`, `created`) VALUES
+(1, 'Rezerwacja', 'dejwidcode@gmail.com', 'Test', 'open', '2023-03-11 22:22:56'),
+(2, 'Rezerwacja', 'dejwidcode@gmail.com', '123', 'open', '2023-03-11 22:36:06');
+
 --
 -- Indeksy dla zrzutów tabel
 --
@@ -110,6 +133,12 @@ ALTER TABLE `room`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeksy dla tabeli `ticket`
+--
+ALTER TABLE `ticket`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT dla zrzuconych tabel
 --
 
@@ -130,6 +159,12 @@ ALTER TABLE `reservation`
 --
 ALTER TABLE `room`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT dla tabeli `ticket`
+--
+ALTER TABLE `ticket`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

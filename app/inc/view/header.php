@@ -27,6 +27,18 @@
     />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" href="/css/style.css" />
+
+    <script>
+      class Redirect {
+        timer = null;
+        constructor(path, time) {
+          this.timer = setInterval( () => {
+            document.location.href = `${path}`;
+          }, time )
+        }
+      }
+    </script>
+
   </head>
   <body>
     <div id="app">
