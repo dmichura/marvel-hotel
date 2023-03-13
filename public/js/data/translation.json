@@ -11,6 +11,8 @@
     "btn-accept": "Akceptuj",
     "btn-book": "Rezerwuj",
     "typing-header": ["Marvel Hotel", "Wypoczynek", "Bezpieczeństwo"],
+    "log-in": "Zaloguj się",
+    "admin-manage": "Zarządzaj",
     "acordeon-0": [
       "Jakie są opcje płatności za pobyt w Hotelu Marvel?",
       "Hotel Marvel akceptuje płatności gotówkowe oraz kartą kredytową (Visa, MasterCard)."
@@ -65,6 +67,8 @@
     "btn-book": "Book",
     "btn-accept": "Accept",
     "typing-header": ["Marvel Hotel", "Rest", "Security"],
+    "log-in": "Log in",
+    "admin-manage": "Manage",
     "acordeon-0": [
       "What are the payment options for staying at Hotel Marvel?",
       "Hotel Marvel accepts cash and credit card payments (Visa, MasterCard)."

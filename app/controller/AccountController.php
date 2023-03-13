@@ -16,6 +16,7 @@ class AccountController implements Controller {
         $this->page['path'] = $req->getPath();
         $this->page['nav'] = $data['nav'];
         $this->page['db'] = $data['db'];
+        $this->page['user'] = $data['user'];
 
         new AccountModel($this->page);
         new AccountView($this->page);

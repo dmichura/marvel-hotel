@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pl-PL" class="preload">
   <head>
@@ -60,8 +61,28 @@
             <div class="nav__hamburger">
               <span></span><span></span><span></span>
             </div>
+
             <ul class="nav__menu">
               <?php foreach ($page['nav'] as $navItem ): ?>
+              <?php
+                // var_dump(isset($navItem[2]));
+                if ( isset($navItem[2]) && isset($page['user']) ) {
+
+                  // _log($navItem[2]);
+                  // var_dump(in_array(($page['user']->getRole()), $navItem[2]));
+                  if( !in_array(($page['user']->getRole()), $navItem[2]) )
+                  {
+                    continue;
+                  }
+                  
+
+                }
+                else
+                {
+
+                }
+
+              ?>
               <?php 
                 $classActive = ($navItem[0] === $page['path']) ? ' active' : "";
               ?>

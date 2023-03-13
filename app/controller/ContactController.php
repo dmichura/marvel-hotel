@@ -20,6 +20,7 @@ class ContactController implements Controller {
             $res->resolve();
             $this->page['path'] = $req->getPath();
             $this->page['nav'] = $data['nav'];
+            $this->page['user'] = $data['user'];
             if( gettype($params) === "array" && count($params) > 0 && isset($params['type']) && gettype($params['type']) == "string" )
             {
 

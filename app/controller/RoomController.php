@@ -14,6 +14,7 @@ class RoomController implements Controller {
 
         $this->page['path'] = $req->getPath();
         $this->page['nav'] = $data['nav'];
+        $this->page['user'] = $data['user'];
         $this->page['db'] = $data['db'];
 
         // echo 'dsada';

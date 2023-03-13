@@ -15,6 +15,7 @@ class AboutController implements Controller {
         $res->resolve();
         $this->page['path'] = $req->getPath();
         $this->page['nav'] = $data['nav'];
+        $this->page['user'] = $data['user'];
         new AboutView($this->page);
 
     }

@@ -15,6 +15,7 @@ class NotFoundController implements Controller {
         $res->resolve();
         $this->page['path'] = $req->getPath();
         $this->page['nav'] = $data['nav'];
+        $this->page['user'] = $data['user'];
         new NotFoundView($this->page);
     }
 

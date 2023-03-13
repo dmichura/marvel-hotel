@@ -63,7 +63,9 @@
         ['gallery', 'gallery'],
         ['contact', 'contact'],
         ['rooms', 'rooms'],
-        ['account', 'my-account'],
+        ['account', 'log-in', [ "Unlogged" ]],
+        ['account', 'my-account', [ "User" ]],
+        ['manage', 'admin-manage', [ "Admin" ]],
     ];
 
     $app = new Application($routes, $nav);
