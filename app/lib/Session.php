@@ -31,7 +31,7 @@ class Session {
         }
     }
 
-    public function get($key) {
+    public function get($key) : string {
         // _log($key);
         if ( isset($key) && $this->active) {
             if ( isset($_SESSION[$key]) ) {
@@ -48,6 +48,23 @@ class Session {
             return false;
         }
     }
+    public function set($key, $val) : bool {
+        if( isset($key) && gettype($key) == "string" )
+        {
+            $_SESSION[$key] = $val;
+            return true;
+        }
+        return false;
+    }
+    public function delete($key) : bool {
+        if( isset($key) && gettype($key) == "string" )
+        {
+            unset($_SESSION[$key]);
+            return true;
+        }
+        return false;
+    }
+    
 }
 
 ?>

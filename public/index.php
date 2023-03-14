@@ -48,8 +48,21 @@
         ['GET', '/rooms', function(Request $req, Response $res, $data=[]) {
             new RoomsController($req, $res, $data);
         }],
+        ['GET', '/manage', function(Request $req, Response $res, $data=[]) {
+            // new AccountController($req, $res, $data);
+            _log('Manage');
+        }],
         ['GET', '/account', function(Request $req, Response $res, $data=[]) {
             new AccountController($req, $res, $data);
+        }],
+        ['GET', '/rule', function(Request $req, Response $res, $data=[]) {
+            // new AccountController($req, $res, $data);
+        }],
+        ['POST', '/auth', function(Request $req, Response $res, $data=[]) {
+            new AuthController($req, $res, $data);
+        }],
+        ['GET', '/logout', function(Request $req, Response $res, $data=[]) {
+            new LogoutController($req, $res, $data);
         }],
         ['GET', '/404', function(Request $req, Response $res, $data=[]) {
             new NotFoundController($req, $res, $data);
@@ -64,7 +77,7 @@
         ['contact', 'contact'],
         ['rooms', 'rooms'],
         ['account', 'log-in', [ "Unlogged" ]],
-        ['account', 'my-account', [ "User" ]],
+        ['account', 'my-account', [ "Admin", "User" ]],
         ['manage', 'admin-manage', [ "Admin" ]],
     ];
 

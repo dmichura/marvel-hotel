@@ -374,7 +374,7 @@ class Request {
   }
 
   getPath() {
-    return this.path
+    return this.path;
   }
 }
 
@@ -398,13 +398,11 @@ class Application {
     );
     this.elements.acordeons = [];
 
-      if(this.request.getPath() === "contact")
-      {
-        for (let i = 0; i <= 9; i++) {
-          this.elements[`acordeon-${i}`] = new Acoredeon(i);
-        }
-    
+    if (this.request.getPath() === "contact") {
+      for (let i = 0; i <= 9; i++) {
+        this.elements[`acordeon-${i}`] = new Acoredeon(i);
       }
+    }
 
     this.hamburger = new Hamburger(
       document.querySelector(".nav__hamburger"),
@@ -444,12 +442,18 @@ class Application {
     } else if (target === this.cookieManager.cookieMessageActionButton) {
       this.cookieManager.acceptCookie();
     } else if (target.tagName !== undefined) {
+      const action = target.getAttribute("data-action");
       if (target.tagName.toUpperCase() === "BUTTON") {
         if (target.className === "room__book") {
-          const roomID = parseInt(target.getAttribute("data-roomid"));
-          if (roomID !== undefined && roomID !== NaN) {
-            // console.log(roomID);
-            goto(`/room?id=${roomID}`);
+          // console.log(action);
+          if (action == "goto") {
+            const roomID = parseInt(target.getAttribute("data-roomid"));
+            if (roomID !== undefined && roomID !== NaN) {
+              // console.log(roomID);
+              goto(`/room?id=${roomID}`);
+              return true;
+            }
+          } else if (action == "book") {
             return true;
           }
         }

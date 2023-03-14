@@ -17,28 +17,35 @@ class RoomController implements Controller {
         $this->page['user'] = $data['user'];
         $this->page['db'] = $data['db'];
 
-        // echo 'dsada';
-        // new RoomController($req, $res, $data);
+        if( $this->page['user']->isLogged() ) {
             $params = $req->getParams();
             if( gettype($params) === "array" && count($params) > 0 && isset($params['id']) && gettype(intval($params['id'])) == "integer" && intval($params['id']) > 0 )
             {
                 // echo $params['id'];
                 $res->setCode(200);
+                // $res->resolve();
                 $res->resolve();
                 $this->page['data']['id'] = $params['id'];
+                $this->page['data']['month'] = ( isset($params['month']) && intval($params['month']) >= 1 && intval($params['month']) <= 12 ) ? intval($params['month']) : false;
+                $this->page['data']['year'] = ( isset($params['year']) && intval($params['year']) >= 2000) ? intval($params['year']) : false;
                 new RoomModel($this->page);
                 new RoomView($this->page);
-                
+                die();
             }
             else
             {
                 $res->setCode(301);
                 $res->setRedirect("rooms");
-                $res->resolve();
-            }
 
-            // $roomID = explode('=', $req->getParams()[0]);
-            // _log($roomID);
+            }
+        }
+        else
+        {
+            $res->setCode(301);
+            $res->setRedirect("rooms");
+        }
+        $res->resolve();
+        die();
 
     }
 
