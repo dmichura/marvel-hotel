@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 13 Mar 2023, 13:00
+-- Czas generowania: 14 Mar 2023, 08:40
 -- Wersja serwera: 10.4.27-MariaDB
--- Wersja PHP: 8.2.0
+-- Wersja PHP: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -73,6 +73,13 @@ CREATE TABLE `reservation` (
   `end_time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
+--
+-- Zrzut danych tabeli `reservation`
+--
+
+INSERT INTO `reservation` (`id`, `room_id`, `account_id`, `start_time`, `end_time`) VALUES
+(1, 1, 1, '2023-03-01 21:00:42', '2023-03-04 21:00:42');
+
 -- --------------------------------------------------------
 
 --
@@ -80,7 +87,7 @@ CREATE TABLE `reservation` (
 --
 
 CREATE TABLE `role` (
-  `id` int(11) NOT NULL,
+  `role_id` int(11) NOT NULL,
   `role_name` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
@@ -88,7 +95,7 @@ CREATE TABLE `role` (
 -- Zrzut danych tabeli `role`
 --
 
-INSERT INTO `role` (`id`, `role_name`) VALUES
+INSERT INTO `role` (`role_id`, `role_name`) VALUES
 (1, 'User'),
 (2, 'Admin');
 
@@ -162,7 +169,7 @@ ALTER TABLE `reservation`
 -- Indeksy dla tabeli `role`
 --
 ALTER TABLE `role`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`role_id`);
 
 --
 -- Indeksy dla tabeli `room`
@@ -190,13 +197,13 @@ ALTER TABLE `account`
 -- AUTO_INCREMENT dla tabeli `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT dla tabeli `role`
 --
 ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT dla tabeli `room`
@@ -218,7 +225,7 @@ ALTER TABLE `ticket`
 -- Ograniczenia dla tabeli `account`
 --
 ALTER TABLE `account`
-  ADD CONSTRAINT `role_id_fk` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `role_id_fk` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ograniczenia dla tabeli `reservation`
