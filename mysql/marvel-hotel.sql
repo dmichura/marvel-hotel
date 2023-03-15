@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 14 Mar 2023, 08:40
+-- Czas generowania: 14 Mar 2023, 12:56
 -- Wersja serwera: 10.4.27-MariaDB
--- Wersja PHP: 8.1.12
+-- Wersja PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -69,8 +69,8 @@ CREATE TABLE `reservation` (
   `id` bigint(20) NOT NULL,
   `room_id` int(11) NOT NULL,
   `account_id` int(11) NOT NULL,
-  `start_time` datetime NOT NULL,
-  `end_time` datetime NOT NULL
+  `start_time` date NOT NULL,
+  `end_time` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
@@ -78,7 +78,10 @@ CREATE TABLE `reservation` (
 --
 
 INSERT INTO `reservation` (`id`, `room_id`, `account_id`, `start_time`, `end_time`) VALUES
-(1, 1, 1, '2023-03-01 21:00:42', '2023-03-04 21:00:42');
+(1, 1, 1, '2023-03-01', '2023-03-04'),
+(2, 1, 1, '2023-03-05', '2023-03-10'),
+(3, 1, 1, '2023-03-12', '2023-03-14'),
+(4, 1, 1, '2023-03-31', '2023-04-08');
 
 -- --------------------------------------------------------
 
@@ -197,7 +200,7 @@ ALTER TABLE `account`
 -- AUTO_INCREMENT dla tabeli `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT dla tabeli `role`

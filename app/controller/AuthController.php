@@ -66,7 +66,7 @@ class AuthController implements Controller {
                         {
                             // create user
                             $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-                            $sql2 = "INSERT INTO `account`(`username`, `password`, `email`, `register_time`) VALUES ('$login', '$hashed_password', '$email', NOW())";
+                            $sql2 = "INSERT INTO `account`(`username`, `password`, `email`, `register_time`, `role_id`) VALUES ('$login', '$hashed_password', '$email', NOW(), 1)";
                             $this->page['db']->query($sql2);
                             $this->page['user']->message("Konto zostało pomyślnie utworzone! Zaloguj się!");
                         }

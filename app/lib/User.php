@@ -56,8 +56,10 @@ class User {
     }
 
     public function message($text, $type=0) : bool {
+        // _log($this->messages);
         if ( isset($text) && $text != "" ) {
             array_push($this->messages, array("text"=>$text, "type"=>$type));
+
             if ( $this->session->set("messages", json_encode($this->messages)) ) {
                 return true;
             }
@@ -68,7 +70,9 @@ class User {
 
     public function showMessages() {
         // return $this->messages;
+
         $messages = $this->getMessages();
+        // _log($messages);
         $html = "";
         if ( isset($messages) && gettype($messages) == "array" && count($messages) > 0 ) {
             $html.="<div class='messages__wrapper'>";

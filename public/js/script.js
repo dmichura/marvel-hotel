@@ -370,7 +370,20 @@ class Acoredeon {
 class Request {
   path = null;
   constructor() {
+    const checkParam = /\?/;
     this.path = document.location.href.split("/").reverse()[0];
+    this.params = {};
+    if (checkParam.test(this.path)) {
+      const query = this.path.split("?");
+      this.path = query[0];
+      let params = query[1].split("&");
+      params.forEach((element) => {
+        const param = element.split("=");
+        if (param[0] != undefined && param[0] != "") {
+          this.params[param[0]] = param[1];
+        }
+      });
+    }
   }
 
   getPath() {
@@ -402,6 +415,16 @@ class Application {
       for (let i = 0; i <= 9; i++) {
         this.elements[`acordeon-${i}`] = new Acoredeon(i);
       }
+    }
+
+    if (this.request.getPath() === "room") {
+      const slider = document.querySelector(".room__preview__slider");
+      slider.setAttribute("data-current-img", 0);
+      const sliderImage = slider.querySelector(".room__preview__slider__image");
+      const sliderImages = slider.getAttribute("data-imgs").split(",");
+      sliderImage.src = `./assets/img/room/${sliderImages[0]}`;
+      const sliderInfo = slider.querySelector(".room__preview__slider__info");
+      sliderInfo.innerText = `1/${sliderImages.length}`;
     }
 
     this.hamburger = new Hamburger(
@@ -455,6 +478,121 @@ class Application {
             }
           } else if (action == "book") {
             return true;
+          }
+        } else if (target.className === "room__preview__calendar__top-prev") {
+          if (this.request.getPath() === "room") {
+            if (
+              this.request.params["id"] !== undefined &&
+              parseInt(this.request.params["id"]) > 0
+            ) {
+              const roomID = parseInt(this.request.params["id"]);
+              const date = new Date();
+              let month =
+                this.request.params["month"] !== undefined &&
+                parseInt(this.request.params["month"]) >= 1 &&
+                parseInt(this.request.params["month"]) <= 12
+                  ? parseInt(this.request.params["month"])
+                  : date.getMonth() + 1;
+              let year =
+                this.request.params["year"] !== undefined
+                  ? parseInt(this.request.params["year"])
+                  : date.getFullYear();
+
+              if (month >= 1 && month <= 12) {
+                if (month - 1 > 0) {
+                  month--;
+                } else {
+                  year--;
+                  month = 12;
+                }
+                goto(`/room?id=${roomID}&month=${month}&year=${year}`);
+              } else {
+                goto(`/room?id=${roomID}`);
+              }
+              return true;
+            }
+            return false;
+          }
+        } else if (target.className === "room__preview__calendar__top-next") {
+          if (this.request.getPath() === "room") {
+            if (
+              this.request.params["id"] !== undefined &&
+              parseInt(this.request.params["id"]) > 0
+            ) {
+              const roomID = parseInt(this.request.params["id"]);
+              const date = new Date();
+              let month =
+                this.request.params["month"] !== undefined &&
+                parseInt(this.request.params["month"]) >= 1 &&
+                parseInt(this.request.params["month"]) <= 12
+                  ? parseInt(this.request.params["month"])
+                  : date.getMonth() + 1;
+              let year =
+                this.request.params["year"] !== undefined
+                  ? parseInt(this.request.params["year"])
+                  : date.getFullYear();
+              // console.log(month);
+              if (month >= 1 && month <= 12) {
+                if (month + 1 >= 13) {
+                  year++;
+                  month = 1;
+                } else {
+                  month++;
+                }
+                // console.log(month);
+                goto(`/room?id=${roomID}&month=${month}&year=${year}`);
+              } else {
+                goto(`/room?id=${roomID}`);
+              }
+              return true;
+            }
+            return false;
+          }
+        } else if (target.className === "room__preview__slider__prev") {
+          if (this.request.getPath() === "room") {
+            const slider = document.querySelector(".room__preview__slider");
+            const sliderImage = slider.querySelector(
+              ".room__preview__slider__image"
+            );
+            const sliderImages = slider.getAttribute("data-imgs").split(",");
+            let newSliderImage = parseInt(
+              slider.getAttribute("data-current-img")
+            );
+            newSliderImage--;
+            if (newSliderImage < 0) {
+              newSliderImage = 0;
+            }
+            slider.setAttribute("data-current-img", newSliderImage);
+            sliderImage.src = `./assets/img/room/${sliderImages[newSliderImage]}`;
+            const sliderInfo = slider.querySelector(
+              ".room__preview__slider__info"
+            );
+            sliderInfo.innerText = `${newSliderImage + 1}/${
+              sliderImages.length
+            }`;
+          }
+        } else if (target.className === "room__preview__slider__next") {
+          if (this.request.getPath() === "room") {
+            const slider = document.querySelector(".room__preview__slider");
+            const sliderImage = slider.querySelector(
+              ".room__preview__slider__image"
+            );
+            const sliderImages = slider.getAttribute("data-imgs").split(",");
+            let newSliderImage = parseInt(
+              slider.getAttribute("data-current-img")
+            );
+            newSliderImage++;
+            if (newSliderImage > sliderImages.length - 1) {
+              newSliderImage = sliderImages.length - 1;
+            }
+            slider.setAttribute("data-current-img", newSliderImage);
+            sliderImage.src = `./assets/img/room/${sliderImages[newSliderImage]}`;
+            const sliderInfo = slider.querySelector(
+              ".room__preview__slider__info"
+            );
+            sliderInfo.innerText = `${newSliderImage + 1}/${
+              sliderImages.length
+            }`;
           }
         }
       } else if (target.tagName.toUpperCase() === "DIV") {

@@ -45,6 +45,9 @@
         ['GET', '/room', function(Request $req, Response $res, $data=[]) {
             new RoomController($req, $res, $data);
         }],
+        ['POST', '/room', function(Request $req, Response $res, $data=[]) {
+            new RoomController($req, $res, $data);
+        }],
         ['GET', '/rooms', function(Request $req, Response $res, $data=[]) {
             new RoomsController($req, $res, $data);
         }],
@@ -73,7 +76,7 @@
         // rote, ls name, permissions
         ['home', 'homepage'],
         // ['about', 'aboutus'],
-        ['gallery', 'gallery'],
+        // ['gallery', 'gallery'],
         ['contact', 'contact'],
         ['rooms', 'rooms'],
         ['account', 'log-in', [ "Unlogged" ]],

@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <html lang="pl-PL" class="preload">
   <head>
-    <meta
+    <!-- <meta
       http-equiv="Content-Security-Policy"
       content="style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;"
-    />
+    /> -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="author" content="Dawid Michura" />
@@ -26,6 +26,7 @@
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" href="/css/style.css" />
 
