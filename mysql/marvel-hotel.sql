@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 14 Mar 2023, 12:56
+-- Czas generowania: 15 Mar 2023, 02:18
 -- Wersja serwera: 10.4.27-MariaDB
--- Wersja PHP: 8.2.0
+-- Wersja PHP: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,8 +41,8 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`id`, `username`, `password`, `email`, `register_time`, `role_id`) VALUES
-(1, 'user', '$2y$10$AHZXMPfoA4cxBY5P1C8Oyux.EGpufrNq00fktb2aODuc3EF7sXOey', 'user@webmaster.pl', '2023-03-13 11:52:23', 1),
-(2, 'admin', '$2y$10$gPcb.5I2S26/yiLy7BY/IugZ/JIZhUQM/1vuM5e3GTC2O.yLCnaWi', 'admin@webmaster.pl', '2023-03-13 11:53:52', 2);
+(1, 'admin', '$2y$10$tjwaIFArpazJyJRzspzShuI47tPP83JpHvtZPos0aAWpF2tf9BxZW', 'admin@webmaster.pl', '2023-03-15 00:18:02', 2),
+(2, 'user', '$2y$10$.msIfeKgJUXu454Wsxp6DOzeNCb4dx4V1EnFyLbqb.Dxa9jPsSplu', 'user@webmaster.pl', '2023-03-15 00:21:31', 1);
 
 -- --------------------------------------------------------
 
@@ -78,10 +78,7 @@ CREATE TABLE `reservation` (
 --
 
 INSERT INTO `reservation` (`id`, `room_id`, `account_id`, `start_time`, `end_time`) VALUES
-(1, 1, 1, '2023-03-01', '2023-03-04'),
-(2, 1, 1, '2023-03-05', '2023-03-10'),
-(3, 1, 1, '2023-03-12', '2023-03-14'),
-(4, 1, 1, '2023-03-31', '2023-04-08');
+(1, 1, 1, '2023-03-15', '2023-04-01');
 
 -- --------------------------------------------------------
 
@@ -112,19 +109,20 @@ CREATE TABLE `room` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `description` text NOT NULL,
-  `thumbnail_path` text NOT NULL
+  `thumbnail_path` text NOT NULL,
+  `images` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
 -- Zrzut danych tabeli `room`
 --
 
-INSERT INTO `room` (`id`, `name`, `description`, `thumbnail_path`) VALUES
-(1, 'Pokój dla 2 osób', 'Pokój dla dwóch osób', 'room-1bed.webp'),
-(2, 'Czarny pokój dla 2 osób ', 'Pokój dla dwóch osób - 2', 'room-1bed-2.webp'),
-(3, 'Pokój dla 2 osób ', 'Pokój dla dwóch osób, widok na morze', 'room-1bed-3.webp'),
-(4, 'Pokój dla 4 osób', 'Pokój dla czterech osób', 'room-2bed.webp'),
-(5, 'Pokój dla 4 osób 2', 'Pokój dla czterech osób - 2', 'room-2bed-2.webp');
+INSERT INTO `room` (`id`, `name`, `description`, `thumbnail_path`, `images`) VALUES
+(1, 'Pokój dla 2 osób', 'Pokój dla dwóch osób', 'room-1bed.webp', '[\"s1.jpg\",\"s2.jpg\", \"s11.jpg\"]'),
+(2, 'Czarny pokój dla 2 osób ', 'Pokój dla dwóch osób - 2', 'room-1bed-2.webp', '[\"s3.jpg\",\"s4.jpg\"]'),
+(3, 'Pokój dla 2 osób ', 'Pokój dla dwóch osób, widok na morze', 'room-1bed-3.webp', '[\"s5.jpg\",\"s6.jpg\"]'),
+(4, 'Pokój dla 4 osób', 'Pokój dla czterech osób', 'room-2bed.webp', '[\"s7.jpg\",\"s8.jpg\"]'),
+(5, 'Pokój dla 4 osób 2', 'Pokój dla czterech osób - 2', 'room-2bed-2.webp', '[\"s9.jpg\",\"s10.jpg\"]');
 
 -- --------------------------------------------------------
 
@@ -140,14 +138,6 @@ CREATE TABLE `ticket` (
   `status` text NOT NULL,
   `created` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
-
---
--- Zrzut danych tabeli `ticket`
---
-
-INSERT INTO `ticket` (`id`, `title`, `email`, `reason`, `status`, `created`) VALUES
-(1, 'Rezerwacja', 'dejwidcode@gmail.com', 'Test', 'open', '2023-03-11 22:22:56'),
-(2, 'Rezerwacja', 'dejwidcode@gmail.com', '123', 'open', '2023-03-11 22:36:06');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -200,7 +190,7 @@ ALTER TABLE `account`
 -- AUTO_INCREMENT dla tabeli `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT dla tabeli `role`
@@ -218,7 +208,7 @@ ALTER TABLE `room`
 -- AUTO_INCREMENT dla tabeli `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- Ograniczenia dla zrzutów tabel

@@ -53,7 +53,8 @@
         }],
         ['GET', '/manage', function(Request $req, Response $res, $data=[]) {
             // new AccountController($req, $res, $data);
-            _log('Manage');
+            // _log('Manage');
+            new AdminController( $req, $res, $data );
         }],
         ['GET', '/account', function(Request $req, Response $res, $data=[]) {
             new AccountController($req, $res, $data);

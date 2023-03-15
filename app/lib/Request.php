@@ -20,7 +20,7 @@ class Request {
                     // _log($param);
                     $paramTable = explode("=", $param);
                     // print_r($paramTable[0]);
-                    if($paramTable[0] != "") {
+                    if( isset($paramTable[0]) && isset($paramTable[1]) && $paramTable[0] != "") {
                         $this->params[$paramTable[0]] = $paramTable[1];
                     }
 
