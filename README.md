@@ -46,4 +46,16 @@ This project presents an innovative hotel managment website. Created for the pur
 
 ### 2. Wyłacz usługi Apache, MySQL a następnie włącz
 
-### 3. Wejdź na stronę localhost
+### 3. Wejdź na stronę localhost/phpmyadmin
+
+### 4. Utwórz bazę danych o nazwie marvel-hotel
+
+### 5. Importuj do stworzenj bazy plik z folderu mysql/marvel-hotel.sql
+
+## Konta
+
+### W projekcie są stworzone dwa konta:
+
+### Admin - login: admin hasło: admin
+
+### User - login: user hasło: user

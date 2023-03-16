@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 15 Mar 2023, 02:18
+-- Czas generowania: 16 Mar 2023, 01:19
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.1.12
 
@@ -78,7 +78,12 @@ CREATE TABLE `reservation` (
 --
 
 INSERT INTO `reservation` (`id`, `room_id`, `account_id`, `start_time`, `end_time`) VALUES
-(1, 1, 1, '2023-03-15', '2023-04-01');
+(1, 1, 1, '2023-03-15', '2023-04-01'),
+(2, 2, 2, '2023-03-15', '2023-03-15'),
+(3, 1, 1, '2023-04-02', '2023-04-09'),
+(4, 5, 2, '2023-03-16', '2023-03-16'),
+(5, 5, 2, '2023-03-28', '2023-03-31'),
+(6, 4, 1, '2023-03-16', '2023-03-16');
 
 -- --------------------------------------------------------
 
@@ -140,6 +145,13 @@ CREATE TABLE `ticket` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
+-- Zrzut danych tabeli `ticket`
+--
+
+INSERT INTO `ticket` (`id`, `title`, `email`, `reason`, `status`, `created`) VALUES
+(1, 'Testowy ticket', 'test@email.pl', 'Testowy ticket', 'open', '2023-03-15 12:43:37');
+
+--
 -- Indeksy dla zrzutów tabel
 --
 
@@ -190,7 +202,7 @@ ALTER TABLE `account`
 -- AUTO_INCREMENT dla tabeli `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT dla tabeli `role`
@@ -208,7 +220,7 @@ ALTER TABLE `room`
 -- AUTO_INCREMENT dla tabeli `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Ograniczenia dla zrzutów tabel

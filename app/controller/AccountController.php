@@ -14,6 +14,7 @@ class AccountController implements Controller {
         $res->setCode(200);
         $res->resolve();
         $this->page['path'] = $req->getPath();
+        $this->page['params'] = $req->getParams();
         $this->page['nav'] = $data['nav'];
         $this->page['db'] = $data['db'];
         $this->page['user'] = $data['user'];

@@ -874,8 +874,39 @@ textarea {
 .account__dashboard {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   background: rgba(0, 0, 0, 0.56);
   gap: 1rem;
+}
+
+.dashboard__menu {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.4rem;
+  gap: 0.5rem;
+}
+
+.dashboard__menu li {
+  /* background: red; */
+  opacity: 0.7;
+  transition: 0.2s linear;
+}
+.dashboard__menu li a {
+  color: wheat;
+}
+
+.dashboard__menu li:hover {
+  opacity: 1;
+}
+.breadcrumbs {
+  margin-top: 1rem;
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  align-items: center;
+  justify-self: flex-start;
 }
 
 .footer {
@@ -893,6 +924,7 @@ textarea {
   display: flex;
   justify-content: space-between;
   width: 33%;
+  max-width: 200px;
   /* flex: 1; */
   padding: 0.5rem;
 
@@ -917,6 +949,9 @@ textarea {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  width: 100%;
+  overflow: hidden;
+  /* max-width: 200px; */
   background: rgba(0, 0, 0, 0.56);
 }
 
@@ -941,6 +976,10 @@ textarea {
 
 .aview__table {
   margin-top: 1.5rem;
+  width: 100%;
+  /* padding: 1rem; */
+  /* background: red; */
+  /* font-size: .5rem; */
 }
 
 .aview__table,
@@ -958,7 +997,14 @@ textarea {
   background: #272626;
 }
 
+/* .aview__table tr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
 .aview__table a {
+  /* font-size: .5rem; */
   color: wheat;
   opacity: 0.7;
   transition: 0.3s linear;
@@ -970,6 +1016,76 @@ textarea {
 .aview__table__buttons {
   display: flex;
   justify-content: space-around;
+}
+
+.aview__table__image__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  /* margin: 0; */
+  min-height: 300px;
+  position: relative;
+  overflow: hidden;
+  /* background: red; */
+}
+
+.aview__table__image__wrapper img {
+  display: block;
+  /* width: 100%;
+  height: 100%; */
+  /* width: 50 */
+  width: auto;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.aview__table__day {
+  background: green;
+}
+
+.aview__table__day.hired {
+  background: red;
+  position: relative;
+}
+
+.aview__table__day.hired::after {
+  pointer-events: none;
+  content: "Zarezerwowany przez:\A"attr(data-account-username) "\A"attr(
+      data-account-email
+    );
+  width: 200px;
+  height: 150px;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  background: rgba(0, 0, 0, 0.9);
+  padding: 1rem;
+  border-radius: 30px;
+  position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.aview__table__day.hired:hover {
+  cursor: pointer;
+}
+
+.aview__table__day.hired:hover::after {
+  display: flex;
+}
+
+.aview__c_buttons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1rem;
 }
 
 @media screen and (min-width: 1000px) {

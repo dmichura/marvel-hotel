@@ -6,11 +6,76 @@ class AccountView implements View {
        ?>
             <?php if($page['user']->isLogged()): ?>
             <section class="account__dashboard">
-                <h2>
-                    Witaj <b><?= $page['user']->getLogin() ?> (<?= $page['user']->getID() ?>)</b>!
-                    <!-- RoleName <b><?= $page['user']->getRole() ?></b> -->
-                </h2>
-                <a href="logout">Wyloguj się</a>
+                <?php if( !isset($page['params']['mode']) ): ?>
+                    <div class="breadcrumbs">
+                        <a href="account"> Dashboard </a>
+                        
+                    </div>
+                    <h2>
+                        Witaj <b><?= $page['user']->getLogin() ?> (<?= $page['user']->getID() ?>)</b>!
+                        <!-- RoleName <b><?= $page['user']->getRole() ?></b> -->
+
+            
+                    </h2>
+                    <ul class="dashboard__menu">
+                        <li><a href="account?mode=showReservations">Moje rezerwacje</a></li>
+                        <li><a href="logout">Wyloguj się</a></li>
+                    </ul>
+                <?php elseif($page['params']['mode'] === "showReservations"):;?>
+                    <div class="breadcrumbs">
+                        <a href="account"> Dashboard </a>
+                        ->
+                        <a href="account?mode=showReservations"> Moje rezerwacje</a>
+                    </div>
+                    <?php if( isset($page['data']['reservations']) && gettype($page['data']['reservations']) == "array" && count($page['data']['reservations']) > 0 ): ?>
+                        <table class="aview__table">
+                            <tr>
+                                <th>
+                                    id
+                                </th>
+                                <th>
+                                    uid
+                                </th>
+                                <th>
+                                    pokój
+                                </th>
+                                <th>
+                                    od:
+                                </th>
+                                <th>
+                                    do:
+                                </th>
+        
+                            </tr>
+                            <?php foreach( $page['data']['reservations'] as $index=>$reservation ): ?>
+                                <?php
+                                    // _log($user);
+                                ?>
+                                <tr>
+                                    <td>
+                                        <?= $index + 1 ?>
+                                    </td>
+                                    <td>
+                                        <?= $reservation['id'] ?>
+                                    </td>
+                                    <td>
+                                        <?= $reservation['room_name'] ?>
+                                    </td>
+                                    <td>
+                                        <?= $reservation['start_time'] ?>
+                                    </td>
+                                    <td>
+                                        <?= $reservation['end_time'] ?>
+                                    </td>
+        
+                
+                                </tr>
+                            <?php endforeach; ?>
+                        </table>
+                    <?php else: ?>
+                        <h2>Nie masz żadnych rezerwacji!</h2>
+                    <?php endif;?>
+                <?php endif;?>
             </section>
             <?php else:?>
             <section class="account">

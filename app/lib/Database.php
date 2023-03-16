@@ -34,17 +34,18 @@ class Database {
     public function query($query, $params=[]) : array
     {
         $stmt = $this->con->prepare( $query );
-        if (count($params) > 0) {
-            $build = array_values($params);
-            array_unshift($build, implode("", array_keys($params)));
-            $stmt->bind_param(...$build);
-        }
+        // if (count($params) > 0) {
+        //     $build = array_values($params);
+        //     array_unshift($build, implode("", array_keys($params)));
+        //     $stmt->bind_param(...$build);
+        // }
         $stmt->execute();
         $result = $stmt->get_result();
         if($result)
         {
             $arrResult = $result->fetch_all(MYSQLI_ASSOC);
-                $stmt->close();
+            $stmt->close();
+            $result->free();
             if ( count( $arrResult ) < 0 ) {
                 return [];
             }

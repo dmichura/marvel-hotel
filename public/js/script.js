@@ -548,6 +548,60 @@ class Application {
             }
             return false;
           }
+        } else if (target.className === "aview__c_button__prev") {
+          if (this.request.getPath() === "manage") {
+            const date = new Date();
+            let month =
+              this.request.params["month"] !== undefined &&
+              parseInt(this.request.params["month"]) >= 1 &&
+              parseInt(this.request.params["month"]) <= 12
+                ? parseInt(this.request.params["month"])
+                : date.getMonth() + 1;
+            let year =
+              this.request.params["year"] !== undefined
+                ? parseInt(this.request.params["year"])
+                : date.getFullYear();
+
+            if (month >= 1 && month <= 12) {
+              if (month - 1 > 0) {
+                month--;
+              } else {
+                year--;
+                month = 12;
+              }
+              goto(`/manage?mode=reservations&month=${month}&year=${year}`);
+            } else {
+              goto(`/manage?mode=reservations`);
+            }
+            return true;
+          }
+        } else if (target.className === "aview__c_button__next") {
+          if (this.request.getPath() === "manage") {
+            const date = new Date();
+            let month =
+              this.request.params["month"] !== undefined &&
+              parseInt(this.request.params["month"]) >= 1 &&
+              parseInt(this.request.params["month"]) <= 12
+                ? parseInt(this.request.params["month"])
+                : date.getMonth() + 1;
+            let year =
+              this.request.params["year"] !== undefined
+                ? parseInt(this.request.params["year"])
+                : date.getFullYear();
+
+            if (month >= 1 && month <= 12) {
+              if (month + 1 >= 13) {
+                year++;
+                month = 1;
+              } else {
+                month++;
+              }
+              goto(`/manage?mode=reservations&month=${month}&year=${year}`);
+            } else {
+              goto(`/manage?mode=reservations`);
+            }
+            return true;
+          }
         } else if (target.className === "room__preview__slider__prev") {
           if (this.request.getPath() === "room") {
             const slider = document.querySelector(".room__preview__slider");
