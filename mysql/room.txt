@@ -1,4 +1,0 @@
-id (int)
-name (varchar 50)
-description (text)
-thumbnail_path (text)

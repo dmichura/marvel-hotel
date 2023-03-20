@@ -26,12 +26,20 @@ class Router {
                 }
             }
         }
+
+        // _log($routes);
     }
 
     public function resolve()
     {
+        
         $path = $this->req->getPath();
         $method = $this->req->getMethod();
+
+        // _log(explode("/", $path));
+
+        // _log($this->req->getParams());
+
         if(
             !in_array($method, self::allowedMethod) ||
             !isset($this->routes[$method][$path]) ||
@@ -40,9 +48,9 @@ class Router {
             $this->res->setCode(200);
             $this->res->setRedirect('404');
             $this->res->resolve();
-            die();
         }
         call_user_func($this->routes[$method][$path], $this->req, $this->res, $this->data);
+
     }
 
 }

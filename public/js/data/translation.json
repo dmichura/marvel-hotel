@@ -1,23 +1,113 @@
 {
   "pl": {
+    "404-message": "Nie ma takiej strony!",
     "homepage": "Strona główna",
     "aboutus": "O nas",
     "rooms": "Pokoje",
     "gallery": "Galeria",
     "contact": "Kontakt",
+    "my-account": "Konto",
     "cookie-message": "Ta strona korzysta z plików cookie. Korzystając z tej witryny, wyrażasz zgodę na ich działanie!",
     "btn-accept": "Akceptuj",
-    "typing-header": ["Marvel Hotel", "Wypoczynek", "Bezpieczeństwo"]
+    "btn-book": "Rezerwuj",
+    "typing-header": ["Marvel Hotel", "Wypoczynek", "Bezpieczeństwo"],
+    "log-in": "Zaloguj się",
+    "admin-manage": "Zarządzaj",
+    "acordeon-0": [
+      "Jakie są opcje płatności za pobyt w Hotelu Marvel?",
+      "Hotel Marvel akceptuje płatności gotówkowe oraz kartą kredytową (Visa, MasterCard)."
+    ],
+    "acordeon-1": [
+      "Czy Hotel Marvel posiada recepcję czynną całą dobę?",
+      "Tak, recepcja Hotelu Marvel jest czynna całą dobę, przez 7 dni w tygodniu."
+    ],
+    "acordeon-2": [
+      "Jakie są najbliższe atrakcje turystyczne w okolicy Hotelu Marvel?",
+      "W okolicy Hotelu Marvel znajduje się wiele atrakcji turystycznych, w tym parki wodne, zabytkowe miasta i plaże nad Morzem Czarnym."
+    ],
+    "acordeon-3": [
+      "Czy Hotel Marvel posiada basen?",
+      "Tak, Hotel Marvel posiada basen, który jest dostępny dla gości hotelowych."
+    ],
+    "acordeon-4": [
+      "Czy w Hotelu Marvel można korzystać z bezpłatnego Wi-Fi?",
+      "Tak, w Hotelu Marvel dostępne jest bezpłatne Wi-Fi."
+    ],
+    "acordeon-5": [
+      "Czy Hotel Marvel oferuje usługi spa?",
+      "Tak, Hotel Marvel oferuje usługi spa, w tym masaże i zabiegi kosmetyczne."
+    ],
+    "acordeon-6": [
+      "Czy Hotel Marvel oferuje usługi transferu z lotniska?",
+      "Tak, Hotel Marvel oferuje usługi transferu z lotniska za dodatkową opłatą."
+    ],
+    "acordeon-7": [
+      "Czy w Hotelu Marvel można zatrzymać się z dziećmi?",
+      "Tak, w Hotelu Marvel można zatrzymać się z dziećmi, a hotel oferuje wiele udogodnień dla rodzin z dziećmi."
+    ],
+    "acordeon-8": [
+      "Czy Hotel Marvel oferuje opcję wykupienia all-inclusive?",
+      "Tak, Hotel Marvel oferuje opcję wykupienia all-inclusive, która obejmuje posiłki i napoje."
+    ],
+    "acordeon-9": [
+      "Czy w Hotelu Marvel można zorganizować konferencję lub spotkanie biznesowe?",
+      "Tak, Hotel Marvel posiada sale konferencyjne i oferuje usługi związane z organizacją spotkań biznesowych."
+    ]
   },
 
   "en": {
+    "404-message": "Page not found!",
     "homepage": "Homepage",
     "aboutus": "About us",
     "rooms": "Rooms",
     "gallery": "Gallery",
     "contact": "Contact",
+    "my-account": "Account",
     "cookie-message": "This website uses cookies. By using this site, you consent to their operation!",
+    "btn-book": "Book",
     "btn-accept": "Accept",
-    "typing-header": ["Marvel Hotel", "Rest", "Security"]
+    "typing-header": ["Marvel Hotel", "Rest", "Security"],
+    "log-in": "Log in",
+    "admin-manage": "Manage",
+    "acordeon-0": [
+      "What are the payment options for staying at Hotel Marvel?",
+      "Hotel Marvel accepts cash and credit card payments (Visa, MasterCard)."
+    ],
+    "acordeon-1": [
+      "Does Hotel Marvel have a 24-hour front desk?",
+      "Yes, Hotel Marvel's front desk is open 24 hours a day, 7 days a week."
+    ],
+    "acordeon-2": [
+      "What are the nearest tourist attractions to Hotel Marvel?",
+      "There are many tourist attractions near Hotel Marvel, including water parks, historic cities, and beaches along the Black Sea."
+    ],
+    "acordeon-3": [
+      "Does Hotel Marvel have a swimming pool?",
+      "Yes, Hotel Marvel has a swimming pool that is available to hotel guests."
+    ],
+    "acordeon-4": [
+      "Does Hotel Marvel offer free Wi-Fi?",
+      "Yes, Hotel Marvel offers free Wi-Fi."
+    ],
+    "acordeon-5": [
+      "Does Hotel Marvel offer spa services?",
+      "Yes, Hotel Marvel offers spa services, including massages and beauty treatments."
+    ],
+    "acordeon-6": [
+      "Does Hotel Marvel offer airport shuttle services?",
+      "Yes, Hotel Marvel offers airport shuttle services for an additional fee."
+    ],
+    "acordeon-7": [
+      "Can you stay with children at Hotel Marvel?",
+      "Yes, you can stay with children at Hotel Marvel, and the hotel offers many amenities for families with children."
+    ],
+    "acordeon-8": [
+      "Does Hotel Marvel offer an all-inclusive option?",
+      "Yes, Hotel Marvel offers an all-inclusive option that includes meals and drinks."
+    ],
+    "acordeon-9": [
+      "Can you organize a conference or business meeting at Hotel Marvel?",
+      "Yes, Hotel Marvel has conference rooms and offers services related to organizing business meetings."
+    ]
   }
 }

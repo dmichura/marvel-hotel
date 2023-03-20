@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="pl-PL" class="preload">
   <head>
-    <meta
+    <!-- <meta
       http-equiv="Content-Security-Policy"
       content="style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;"
-    />
+    /> -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="author" content="Dawid Michura" />
@@ -25,8 +26,21 @@
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" href="/css/style.css" />
+
+    <script>
+      class Redirect {
+        timer = null;
+        constructor(path, time) {
+          this.timer = setInterval( () => {
+            document.location.href = `${path}`;
+          }, time )
+        }
+      }
+    </script>
+
   </head>
   <body>
     <div id="app">
@@ -37,41 +51,46 @@
           autoplay="autoplay"
           loop="loop"
           muted="muted"
-          playsinline="playsinline"
-          src="./assets/video/background/7.mp4"
-        ></video>
+          playsinline="playsinline">
+          <source src="./assets/video/background/7.mp4">
+        </video>
       </div>
       <header>
         <div class="header__nav">
           <nav>
-            <a href="/"><h1 class="nav__logo">Marvel Hotel</h1></a>
+            <a href="/" aria-label=""><h1 class="nav__logo">Marvel Hotel</h1></a>
             <div class="nav__hamburger">
               <span></span><span></span><span></span>
             </div>
-            <ul class="nav__menu">
-              <!-- <li class="nav__menu-item active">
-                <a href="" data-ls="homepage"></a>
-              </li>
-              <li class="nav__menu-item">
-                <a href="" data-ls="aboutus"></a>
-              </li>
-              <li class="nav__menu-item">
-                <a href="" data-ls="rooms"></a>
-              </li>
-              <li class="nav__menu-item">
-                <a href="" data-ls="gallery"></a>
-              </li>
-              <li class="nav__menu-item">
-                <a href="" data-ls="contact"></a>
-              </li> -->
 
+            <ul class="nav__menu">
               <?php foreach ($page['nav'] as $navItem ): ?>
-              <li class="nav__menu-item">
+              <?php
+                // var_dump(isset($navItem[2]));
+                if ( isset($navItem[2]) && isset($page['user']) ) {
+
+                  // _log($navItem[2]);
+                  // var_dump(in_array(($page['user']->getRole()), $navItem[2]));
+                  if( !in_array(($page['user']->getRole()), $navItem[2]) )
+                  {
+                    continue;
+                  }
+                  
+
+                }
+                else
+                {
+
+                }
+
+              ?>
+              <?php 
+                $classActive = ($navItem[0] === $page['path']) ? ' active' : "";
+              ?>
+              <li class="nav__menu-item<?=$classActive?>">
                 <a href="<?= $navItem[0] ?>" data-ls="<?= $navItem[1] ?>"></a>
               </li>
               <?php endforeach; ?>
-
-
               <li id="nav__menu-flags"></li>
             </ul>
           </nav>
